@@ -48,17 +48,17 @@ const About = () => {
           <div className="max-w-4xl mx-auto mb-16">
             <div className="glass-effect p-8 md:p-12 rounded-2xl">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                I'm a passionate <span className="text-blue-400 font-semibold">Frontend-Focused Full Stack Engineer</span> with 
+                I&apos;m a passionate <span className="text-blue-400 font-semibold">Frontend-Focused Full Stack Engineer</span> with 
                 a strong foundation in building modern, scalable web applications. With expertise in <span className="text-purple-400 font-semibold">React, 
                 Next.js, and TypeScript</span>, I create responsive and intuitive user interfaces that deliver exceptional user experiences.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
                 My journey includes working with diverse technologies from <span className="text-blue-400 font-semibold">JavaScript ecosystems</span> to 
-                backend systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I've contributed to healthcare 
+                backend systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve contributed to healthcare 
                 systems, ERP implementations, and freelance projects, always focusing on code quality and performance.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                I'm driven by continuous learning and innovation, seeking opportunities to leverage my technical skills in 
+                I&apos;m driven by continuous learning and innovation, seeking opportunities to leverage my technical skills in 
                 emerging technologies while collaborating with dynamic teams to build impactful solutions.
               </p>
             </div>
