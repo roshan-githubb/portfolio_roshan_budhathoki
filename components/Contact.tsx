@@ -18,12 +18,26 @@ const Contact = () => {
     message: '',
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Add your form submission logic here (e.g., EmailJS, API route)
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsSubmitting(true)
+    
+    // Create mailto link with form data
+    const mailtoLink = `mailto:roshanbc9860@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`
+    
+    // Open email client
+    window.location.href = mailtoLink
+    
+    // Show success message
+    setTimeout(() => {
+      alert('Opening your email client... Please send the email to complete your message.')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      setIsSubmitting(false)
+    }, 500)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,8 +85,8 @@ const Contact = () => {
             >
               <h3 className="text-2xl font-bold mb-6">Let&apos;s Connect</h3>
               <p className="text-gray-400 mb-8">
-                I&apos;m currently looking for new opportunities and exciting projects. 
-                Whether you have a question or just want to say hi, feel free to reach out!
+                I&apos;m actively seeking new opportunities and exciting projects. 
+                Whether you&apos;re looking to hire, collaborate, or just want to connect, I&apos;d love to hear from you!
               </p>
 
               <div className="space-y-6 mb-8">
@@ -104,7 +118,7 @@ const Contact = () => {
                   <Linkedin size={24} />
                 </a>
                 <a
-                  href="https://github.com/roshanbudhathoki"
+                  href="https://github.com/roshan-githubb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 glass-effect rounded-xl hover:bg-purple-500/20 transition-all duration-300 hover:scale-110"
@@ -193,11 +207,15 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full btn-primary flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send size={20} />
-                  Send Message
+                  {isSubmitting ? 'Opening Email...' : 'Send Message'}
                 </button>
+                <p className="text-xs text-gray-500 mt-3 text-center">
+                  This will open your email client to send the message
+                </p>
               </form>
             </motion.div>
           </div>
@@ -210,7 +228,7 @@ const Contact = () => {
             className="text-center mt-20 pt-8 border-t border-white/10"
           >
             <p className="text-gray-400">
-              © 2025 Roshan Budhathoki. Built with Next.js, TypeScript & Tailwind CSS
+              © 2026 Roshan Budhathoki
             </p>
           </motion.div>
         </motion.div>

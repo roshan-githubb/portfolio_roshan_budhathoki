@@ -14,13 +14,13 @@ const About = () => {
   const highlights = [
     {
       icon: <Code2 size={32} />,
-      title: 'Frontend Expert',
-      description: 'Specialized in React, Next.js 15+, TypeScript, and modern UI frameworks',
+      title: 'Full Stack Development',
+      description: 'Expert in React, Next.js, TypeScript, Java, and modern web technologies',
     },
     {
       icon: <Rocket size={32} />,
-      title: 'Full Stack Capable',
-      description: 'Proficient in Java, Node.js, SQL, MongoDB, and cloud technologies',
+      title: 'Scalable Solutions',
+      description: 'Building high-performance applications with Node.js, SQL, MongoDB, and cloud platforms',
     },
     {
       icon: <Users size={32} />,
@@ -30,7 +30,7 @@ const About = () => {
     {
       icon: <Award size={32} />,
       title: 'Quality Focused',
-      description: 'Committed to clean code, testing, and performance optimization',
+      description: 'Committed to clean code, best practices, and performance optimization',
     },
   ]
 
@@ -48,18 +48,18 @@ const About = () => {
           <div className="max-w-4xl mx-auto mb-16">
             <div className="glass-effect p-8 md:p-12 rounded-2xl">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                I&apos;m a passionate <span className="text-blue-400 font-semibold">Frontend-Focused Full Stack Engineer</span> with 
-                a strong foundation in building modern, scalable web applications. With expertise in <span className="text-purple-400 font-semibold">React, 
-                Next.js, and TypeScript</span>, I create responsive and intuitive user interfaces that deliver exceptional user experiences.
+                I&apos;m a passionate <span className="text-blue-400 font-semibold">Full Stack Engineer</span> with 
+                extensive experience in building modern, scalable web applications. With expertise in <span className="text-purple-400 font-semibold">React, 
+                Next.js, TypeScript, Java, and SQL</span>, I deliver end-to-end solutions that combine powerful backends with intuitive user interfaces.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                My journey includes working with diverse technologies from <span className="text-blue-400 font-semibold">JavaScript ecosystems</span> to 
-                backend systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve contributed to healthcare 
-                systems, ERP implementations, and freelance projects, always focusing on code quality and performance.
+                My journey spans diverse technologies from <span className="text-blue-400 font-semibold">JavaScript ecosystems</span> to 
+                enterprise systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve contributed to healthcare 
+                platforms, ERP implementations, and client projects, consistently delivering high-quality, performant solutions.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                I&apos;m driven by continuous learning and innovation, seeking opportunities to leverage my technical skills in 
-                emerging technologies while collaborating with dynamic teams to build impactful solutions.
+                Driven by continuous learning and innovation, I thrive on solving complex problems and building impactful applications 
+                that make a difference. I&apos;m seeking opportunities to contribute my full-stack expertise to dynamic teams and challenging projects.
               </p>
             </div>
           </div>

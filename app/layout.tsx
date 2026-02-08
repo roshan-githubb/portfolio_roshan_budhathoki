@@ -6,13 +6,13 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Roshan Budhathoki - Frontend-Focused Full Stack Engineer',
-  description: 'Experienced Full Stack Engineer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable, responsive applications with expertise in frontend development.',
-  keywords: 'Frontend Developer, Full Stack Engineer, React, Next.js, TypeScript, JavaScript, Java, SQL, MongoDB, Web Developer, Kathmandu',
+  title: 'Roshan Budhathoki - Full Stack Engineer',
+  description: 'Experienced Full Stack Engineer specializing in React, Next.js, TypeScript, JavaScript, Java, SQL, and MongoDB. Building scalable, high-performance web applications with modern technologies.',
+  keywords: 'Full Stack Engineer, Full Stack Developer, React, Next.js, TypeScript, JavaScript, Java, Spring Boot, SQL, MongoDB, Node.js, Web Developer, Software Engineer, Kathmandu, Nepal',
   authors: [{ name: 'Roshan Budhathoki' }],
   openGraph: {
-    title: 'Roshan Budhathoki - Frontend-Focused Full Stack Engineer',
-    description: 'Experienced Full Stack Engineer specializing in React, Next.js, TypeScript, and modern web technologies.',
+    title: 'Roshan Budhathoki - Full Stack Engineer',
+    description: 'Experienced Full Stack Engineer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable, high-performance applications.',
     type: 'website',
     locale: 'en_US',
   },

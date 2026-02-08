@@ -13,57 +13,39 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-featured e-commerce application with product catalog, shopping cart, payment integration, and admin dashboard.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Stripe'],
-      image: '/images/projects/ecommerce.jpg',
-      liveUrl: '#',
-      githubUrl: '#',
-      featured: true,
-    },
-    {
       title: 'Healthcare Management System',
-      description: 'HIPAA-compliant healthcare platform for patient management, appointments, and medical records with role-based access.',
+      description: 'Enterprise-grade HIPAA-compliant platform for patient management, appointments, and medical records with role-based access control and real-time data synchronization.',
       technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS'],
-      image: '/images/projects/healthcare.jpg',
-      liveUrl: '#',
-      githubUrl: '#',
       featured: true,
     },
     {
-      title: 'Real-Time Chat Application',
-      description: 'Modern chat app with real-time messaging, file sharing, group chats, and user presence indicators.',
-      technologies: ['Next.js', 'Socket.io', 'Node.js', 'MongoDB', 'Redis'],
-      image: '/images/projects/chat.jpg',
-      liveUrl: '#',
-      githubUrl: '#',
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with advanced product catalog, secure payment integration, inventory management, and comprehensive admin dashboard.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Node.js', 'MongoDB', 'Stripe'],
+      featured: true,
+    },
+    {
+      title: 'Real-Time Collaboration Tool',
+      description: 'Modern team collaboration platform with real-time messaging, file sharing, video calls, and project management features.',
+      technologies: ['Next.js', 'Socket.io', 'Node.js', 'PostgreSQL', 'Redis', 'WebRTC'],
+      featured: true,
+    },
+    {
+      title: 'Form Builder Application',
+      description: 'Drag-and-drop form builder with custom field types, conditional logic, validation rules, and response analytics dashboard.',
+      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       featured: false,
     },
     {
       title: 'Task Management Dashboard',
-      description: 'Collaborative project management tool with kanban boards, task assignments, and progress tracking.',
+      description: 'Agile project management tool with kanban boards, sprint planning, task assignments, time tracking, and analytics.',
       technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-      image: '/images/projects/taskmanager.jpg',
-      liveUrl: '#',
-      githubUrl: '#',
       featured: false,
     },
     {
-      title: 'Portfolio Website Builder',
-      description: 'SaaS platform for creating professional portfolio websites with drag-and-drop interface and customizable templates.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Prisma'],
-      image: '/images/projects/portfolio.jpg',
-      liveUrl: '#',
-      githubUrl: '#',
-      featured: false,
-    },
-    {
-      title: 'Weather Forecast App',
-      description: 'Beautiful weather application with real-time data, 7-day forecasts, and location-based weather alerts.',
-      technologies: ['React', 'JavaScript', 'OpenWeather API', 'CSS3'],
-      image: '/images/projects/weather.jpg',
-      liveUrl: '#',
-      githubUrl: '#',
+      title: 'Analytics Dashboard',
+      description: 'Data visualization platform with real-time analytics, custom reports, and interactive charts for business intelligence.',
+      technologies: ['React', 'TypeScript', 'D3.js', 'Node.js', 'MongoDB'],
       featured: false,
     },
   ]
@@ -78,6 +60,9 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title gradient-text">Featured Projects</h2>
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+            Showcasing impactful solutions built with modern technologies and best practices
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {projects.map((project, index) => (
@@ -102,15 +87,17 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                      {project.title}
+                    </h3>
+                  </div>
                   <p className="text-gray-400 text-sm mb-4 line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
@@ -119,24 +106,6 @@ const Projects = () => {
                         {tech}
                       </span>
                     ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex gap-4">
-                    <a
-                      href={project.liveUrl}
-                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-blue-400 transition-colors"
-                    >
-                      <ExternalLink size={16} />
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-purple-400 transition-colors"
-                    >
-                      <Github size={16} />
-                      Code
-                    </a>
                   </div>
                 </div>
               </motion.div>

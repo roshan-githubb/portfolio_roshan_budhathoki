@@ -59,7 +59,7 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold mb-6 text-gray-300">
-                Frontend-Focused Full Stack Engineer
+                Full Stack Engineer
               </h2>
             </motion.div>
 
@@ -69,8 +69,8 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="text-base md:text-lg text-gray-400 mb-8"
             >
-              Building scalable, responsive web applications with modern technologies.
-              Specializing in React, Next.js, and TypeScript with full-stack capabilities.
+              Crafting scalable, high-performance web applications with modern technologies.
+              Expertise in React, Next.js, TypeScript, Java, SQL, and MongoDB.
             </motion.p>
 
             {/* Tech Stack Badges */}
@@ -124,7 +124,7 @@ const Hero = () => {
                 <Linkedin size={24} />
               </a>
               <a
-                href="https://github.com/roshanbudhathoki"
+                href="https://github.com/roshan-githubb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 glass-effect rounded-full hover:bg-purple-500/20 transition-all duration-300 hover:scale-110"
