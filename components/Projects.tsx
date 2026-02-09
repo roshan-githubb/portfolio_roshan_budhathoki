@@ -3,7 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ExternalLink, Github } from 'lucide-react'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -37,15 +36,15 @@ const Projects = () => {
       featured: false,
     },
     {
-      title: 'Real-Time Collaboration Tool',
-      description: 'Modern team collaboration platform with real-time messaging, file sharing, video calls, and project management features.',
-      technologies: ['Next.js', 'Socket.io', 'Node.js', 'PostgreSQL', 'Redis', 'WebRTC'],
+      title: 'Business Admin Dashboard',
+      description: 'Comprehensive admin dashboard with sales analytics, inventory management, and order processing. Integrated Khalti payment gateway and cash on delivery. Real-time business insights for customer behavior and sales trends that directly impacted business growth.',
+      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Khalti SDK', 'Chart.js'],
       featured: false,
     },
     {
-      title: 'Task Management Dashboard',
-      description: 'Agile project management tool with kanban boards, sprint planning, task assignments, time tracking, and analytics.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+      title: 'Short-Form Video Social Media App',
+      description: 'TikTok-inspired social media platform with short video uploads, infinite scroll feed, likes, comments, and user profiles. Built responsive UI with smooth video playback and engaging user interactions.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Video.js'],
       featured: false,
     },
   ]
@@ -92,7 +91,7 @@ const Projects = () => {
                       {project.title}
                     </h3>
                   </div>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-400 text-sm mb-4">
                     {project.description}
                   </p>
 
