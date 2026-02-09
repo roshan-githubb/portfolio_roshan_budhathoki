@@ -31,7 +31,7 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: 'Form Builder (Google Forms Clone)',
+      title: 'Form Builder',
       description: 'Intuitive drag-and-drop form builder similar to Google Forms with multiple question types, conditional logic, response validation, real-time collaboration, and analytics dashboard.',
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       featured: false,
