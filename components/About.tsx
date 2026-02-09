@@ -19,8 +19,8 @@ const About = () => {
     },
     {
       icon: <Rocket size={32} />,
-      title: 'Scalable Solutions',
-      description: 'Building high-performance applications with Node.js, SQL, MongoDB, and cloud platforms',
+      title: 'Fast Learner & Adaptable',
+      description: 'Quick to master new technologies and adapt to changing project requirements',
     },
     {
       icon: <Users size={32} />,
@@ -49,17 +49,15 @@ const About = () => {
             <div className="glass-effect p-8 md:p-12 rounded-2xl">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
                 I&apos;m a passionate <span className="text-blue-400 font-semibold">Full Stack Engineer</span> with 
-                extensive experience in building modern, scalable web applications. With expertise in <span className="text-purple-400 font-semibold">React, 
-                Next.js, TypeScript, Java, and SQL</span>, I deliver end-to-end solutions that combine powerful backends with intuitive user interfaces.
+                extensive experience in building modern, scalable web applications. As a <span className="text-purple-400 font-semibold">fast learner and adaptable developer</span>, I quickly master new technologies and frameworks, delivering end-to-end solutions with expertise in <span className="text-blue-400 font-semibold">React, Next.js, TypeScript, Java, and SQL</span>.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
                 My journey spans diverse technologies from <span className="text-blue-400 font-semibold">JavaScript ecosystems</span> to 
-                enterprise systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve contributed to healthcare 
-                platforms, ERP implementations, and client projects, consistently delivering high-quality, performant solutions.
+                enterprise systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve successfully adapted to various tech stacks including Medusa.js, Business Central, and cloud platforms, consistently delivering high-quality, performant solutions.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                Driven by continuous learning and innovation, I thrive on solving complex problems and building impactful applications 
-                that make a difference. I&apos;m seeking opportunities to contribute my full-stack expertise to dynamic teams and challenging projects.
+                Driven by continuous learning and innovation, I thrive on solving complex problems and quickly adapting to new challenges. 
+                I&apos;m seeking opportunities to contribute my full-stack expertise and adaptability to dynamic teams and impactful projects.
               </p>
             </div>
           </div>

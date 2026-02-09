@@ -69,7 +69,7 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="text-base md:text-lg text-gray-400 mb-8"
             >
-              Crafting scalable, high-performance web applications with modern technologies.
+              Fast learner and adaptable engineer crafting scalable, high-performance web applications.
               Expertise in React, Next.js, TypeScript, Java, SQL, and MongoDB.
             </motion.p>
 

@@ -19,33 +19,33 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with advanced product catalog, secure payment integration, inventory management, and comprehensive admin dashboard.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Node.js', 'MongoDB', 'Stripe'],
+      title: 'Microsoft Dynamics 365 Business Central ERP',
+      description: 'Implemented and customized ERP system for multiple clients with custom modules, reports, and integrations. Developed solutions using C#, AL language, and SQL Server Reporting Services.',
+      technologies: ['C#', 'AL Language', '.NET', 'SQL Server', 'SSRS', 'Business Central'],
       featured: true,
+    },
+    {
+      title: 'Multivendor E-Commerce Platform',
+      description: 'Built scalable multivendor marketplace using Medusa.js and Mercurius open-source backend with Next.js frontend. Features vendor management, product catalogs, order processing, and payment integration.',
+      technologies: ['Next.js', 'Medusa.js', 'Mercurius', 'React', 'TypeScript', 'PostgreSQL'],
+      featured: true,
+    },
+    {
+      title: 'Form Builder (Google Forms Clone)',
+      description: 'Intuitive drag-and-drop form builder similar to Google Forms with multiple question types, conditional logic, response validation, real-time collaboration, and analytics dashboard.',
+      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+      featured: false,
     },
     {
       title: 'Real-Time Collaboration Tool',
       description: 'Modern team collaboration platform with real-time messaging, file sharing, video calls, and project management features.',
       technologies: ['Next.js', 'Socket.io', 'Node.js', 'PostgreSQL', 'Redis', 'WebRTC'],
-      featured: true,
-    },
-    {
-      title: 'Form Builder Application',
-      description: 'Drag-and-drop form builder with custom field types, conditional logic, validation rules, and response analytics dashboard.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       featured: false,
     },
     {
       title: 'Task Management Dashboard',
       description: 'Agile project management tool with kanban boards, sprint planning, task assignments, time tracking, and analytics.',
       technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-      featured: false,
-    },
-    {
-      title: 'Analytics Dashboard',
-      description: 'Data visualization platform with real-time analytics, custom reports, and interactive charts for business intelligence.',
-      technologies: ['React', 'TypeScript', 'D3.js', 'Node.js', 'MongoDB'],
       featured: false,
     },
   ]
