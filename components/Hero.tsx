@@ -102,9 +102,9 @@ const Hero = () => {
                 <Mail size={20} />
                 Get In Touch
               </a>
-              <a href="/resume.pdf" download className="btn-secondary inline-flex items-center justify-center gap-2">
+              <a href="https://drive.google.com/file/d/1Hwg_Er_rSrWN4laCTglmRx_cT2Pa0x3B/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center justify-center gap-2">
                 <Download size={20} />
-                Download Resume
+                View and Download Resume
               </a>
             </motion.div>
 
