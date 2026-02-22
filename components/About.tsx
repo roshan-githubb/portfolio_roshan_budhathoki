@@ -62,7 +62,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Highlights Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, index) => (
               <motion.div
