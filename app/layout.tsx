@@ -1,7 +1,9 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
+import FirebaseAnalytics from '@/components/FirebaseAnalytics'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +27,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {process.env.NODE_ENV === 'development' && (
+          <Script id="firebase-debug" strategy="beforeInteractive">
+            {`window['GA_DEBUG'] = true;`}
+          </Script>
+        )}
+        <FirebaseAnalytics />
+        {children}
+      </body>
     </html>
   )
 }
