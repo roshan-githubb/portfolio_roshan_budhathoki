@@ -27,25 +27,21 @@ let analytics: Analytics | null = null
 
 const initializeFirebase = async () => {
   if (!isFirebaseConfigured()) {
-    console.warn('Firebase is not configured. Add your Firebase credentials to .env.local')
     return
   }
 
   if (typeof window === 'undefined') return
 
   try {
-    // Initialize app
     app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
     
-    // Check if analytics is supported
     const analyticsSupported = await isSupported()
     
     if (analyticsSupported && app) {
       analytics = getAnalytics(app)
-      console.log('✅ Firebase Analytics initialized with Measurement ID:', firebaseConfig.measurementId)
     }
   } catch (error) {
-    console.error('Firebase initialization error:', error)
+    // Silent fail
   }
 }
 
