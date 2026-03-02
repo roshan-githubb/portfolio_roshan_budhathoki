@@ -17,7 +17,7 @@ ABOUT ROSHAN:
 
 WORK EXPERIENCE:
 
-1. Frontend Developer - Freelance (June 2024 - March 2025)
+1. Full Stack Software Engineer - Saransa Media Lab (September 2025 - Present)
    Location: Remote
    - Built TikTok-inspired short-form video social media app with Next.js and React featuring infinite scroll, video playback, likes, comments, and user profiles
    - Developed multivendor e-commerce platform using Medusa.js and Mercurius backend with Next.js frontend
@@ -26,9 +26,22 @@ WORK EXPERIENCE:
    - Integrated RESTful APIs for dynamic data handling and real-time updates
    - Optimized performance through code-splitting, lazy loading, and bundle optimization
    - Quickly adapted to new technologies including Medusa.js ecosystem and video streaming solutions
+   - Collaborated with designers and backend teams using Agile methodologies
    - Technologies: Next.js, React, TypeScript, Medusa.js, Mercurius, JavaScript, Tailwind CSS, Video.js, HTML, CSS, REST APIs, GraphQL, Git
 
-2. Full Stack Software Engineer - Cedar Gate Technologies (October 2023 - May 2024)
+2. Frontend Developer - Next.js - Freelance (June 2024 - March 2025)
+   Location: Remote
+   - Developed responsive and scalable user interfaces of Admin Panel and dashboards with charts using Next.js 15+, React 18+, JavaScript (ES6+), HTML, and CSS
+   - Collaborated closely with designers and backend teams to deliver seamless user experiences
+   - Built reusable components and implemented efficient state management with React Hooks and Context API
+   - Integrated RESTful APIs for dynamic data handling
+   - Optimized performance through code-splitting and lazy loading
+   - Ensured cross-browser and mobile responsiveness
+   - Followed Git-based version control and Agile development practices
+   - Contributed to improved UI quality by reducing UI issues through better testing and clean code standards
+   - Technologies: Next.js, React, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, REST APIs, Git
+
+3. Full Stack Software Engineer - Cedar Gate Technologies (October 2023 - May 2024)
    Location: Sanepa, Lalitpur
    - Worked on healthcare data systems with focus on bug fixes, feature development, and cloud deployments
    - Resolved client tickets including bug fixes and feature requests
@@ -64,7 +77,7 @@ TECHNICAL SKILLS:
 - Backend: Node.js, Java, Spring Boot, C#, .NET
 - Databases: SQL, MySQL, MongoDB, PostgreSQL
 - Cloud & DevOps: AWS (deployment, cloud management)
-- Tools & Others: Git, REST APIs, GraphQL, Medusa.js, Mercurius, Video.js, SSRS, Active Directory, Unix/Linux
+- Tools & Others: Git, REST APIs, GraphQL, System Design, Medusa.js, Mercurius, Video.js, SSRS, Active Directory, Unix/Linux
 
 KEY PROJECTS:
 
@@ -105,11 +118,11 @@ EDUCATION:
 - Graduated: 2022
 
 PERSONAL TRAITS:
-- Ownership: Takes full ownership of features, tasks, and software projects from conception to deployment, ensuring quality and alignment with project goals
-- Creative Input: Actively contributes creative ideas and innovative solutions to enhance software features, thinking beyond requirements
-- Execution: Thrives on executing and completing tasks efficiently, transforming ideas into working solutions while maintaining code quality
-- User-Focused: Builds software with a user-first mindset, creating solutions that are accessible, intuitive, and solve real-world problems
-- Adaptive: Quickly adapts to new tools, frameworks, and technologies to maximize efficiency and impact
+- Ownership & Accountability: Takes complete ownership of features and projects from start to finish, ensuring every deliverable meets the highest quality standards
+- Creative Problem Solving: Brings innovative thinking to every challenge, contributing creative solutions that go beyond basic requirements
+- Efficient Execution: Excels at transforming ideas into reality with speed and precision, delivering high-quality code on time
+- User-Centric Mindset: Builds software that prioritizes user experience, accessibility, and real-world problem-solving
+- Continuous Learning: Embraces new technologies and methodologies with enthusiasm, constantly expanding skill set
 
 AVAILABILITY:
 - Currently open to new opportunities and freelance projects

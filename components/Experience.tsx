@@ -13,11 +13,11 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: 'Frontend Developer - Next.js',
-      company: 'Freelance',
+      title: 'Full Stack Software Engineer',
+      company: 'Saransa Media Lab',
       location: 'Remote',
-      period: 'June 2024 - March 2025',
-      description: 'Specialized in building modern, responsive web applications using cutting-edge frontend technologies and open-source solutions.',
+      period: 'September 2025 - Present',
+      description: 'Building modern web applications with focus on scalable architecture and user experience.',
       achievements: [
         'Built TikTok-inspired short-form video social media app with Next.js and React featuring infinite scroll, video playback, likes, comments, and user profiles',
         'Developed multivendor e-commerce platform using Medusa.js and Mercurius backend with Next.js frontend',
@@ -29,6 +29,24 @@ const Experience = () => {
         'Collaborated with designers and backend teams using Agile methodologies',
       ],
       technologies: ['Next.js', 'React', 'TypeScript', 'Medusa.js', 'Mercurius', 'JavaScript', 'Tailwind CSS', 'Video.js', 'HTML', 'CSS', 'REST APIs', 'GraphQL', 'Git'],
+    },
+    {
+      title: 'Frontend Developer - Next.js',
+      company: 'Freelance',
+      location: 'Remote',
+      period: 'June 2024 - March 2025',
+      description: 'Specialized in developing responsive and scalable user interfaces with modern frontend technologies.',
+      achievements: [
+        'Developed responsive and scalable user interfaces of Admin Panel and dashboards with charts using Next.js 15+, React 18+, JavaScript (ES6+), HTML, and CSS',
+        'Collaborated closely with designers and backend teams to deliver seamless user experiences',
+        'Built reusable components and implemented efficient state management with React Hooks and Context API',
+        'Integrated RESTful APIs for dynamic data handling',
+        'Optimized performance through code-splitting and lazy loading',
+        'Ensured cross-browser and mobile responsiveness',
+        'Followed Git-based version control and Agile development practices',
+        'Contributed to improved UI quality by reducing UI issues through better testing and clean code standards',
+      ],
+      technologies: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'REST APIs', 'Git', 'Agile'],
     },
     {
       title: 'Full Stack Software Engineer',

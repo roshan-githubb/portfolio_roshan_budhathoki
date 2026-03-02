@@ -14,28 +14,28 @@ const PersonalTraits = () => {
   const traits = [
     {
       icon: Target,
-      title: 'Ownership',
-      description: 'I take full ownership of features, tasks, and software projects from conception to deployment. I believe in being accountable for the quality and success of every deliverable, ensuring that each component meets the highest standards and aligns with project goals.',
+      title: 'Ownership & Accountability',
+      description: 'I take complete ownership of features and projects from start to finish, ensuring every deliverable meets the highest quality standards. I believe in being accountable for both successes and challenges, driving projects forward with dedication and responsibility.',
     },
     {
       icon: Lightbulb,
-      title: 'Creative Input',
-      description: 'I actively contribute creative ideas and innovative solutions to enhance software features. By thinking beyond requirements, I help shape products that are not only functional but also intuitive and engaging for end users.',
+      title: 'Creative Problem Solving',
+      description: 'I bring innovative thinking to every challenge, contributing creative solutions that go beyond basic requirements. By combining technical expertise with imagination, I help build products that are both functional and delightful to use.',
     },
     {
       icon: Zap,
-      title: 'Execution',
-      description: 'I thrive on executing and completing tasks efficiently. My focus is on delivering results with precision and speed, transforming ideas into working solutions while maintaining code quality and meeting deadlines consistently.',
+      title: 'Efficient Execution',
+      description: 'I excel at transforming ideas into reality with speed and precision. My focus on efficient execution means delivering high-quality code on time, maintaining clean architecture, and consistently meeting project milestones without compromising standards.',
     },
     {
       icon: Users,
-      title: 'User-Focused Product',
-      description: 'I build software with a user-first mindset, always considering how features impact the end-user experience. By empathizing with user needs and behaviors, I create solutions that are accessible, intuitive, and genuinely solve real-world problems.',
+      title: 'User-Centric Mindset',
+      description: 'Every line of code I write considers the end user. I build software that prioritizes user experience, accessibility, and real-world problem-solving. By empathizing with users, I create intuitive interfaces that people genuinely enjoy using.',
     },
     {
       icon: Rocket,
-      title: 'Adaptive to New Technologies',
-      description: 'I quickly adapt to new tools, frameworks, and technologies in projects to maximize efficiency and impact. Whether it\'s learning a new library or adopting emerging best practices, I embrace change as an opportunity to grow and deliver better solutions.',
+      title: 'Continuous Learning',
+      description: 'I embrace new technologies and methodologies with enthusiasm, constantly expanding my skill set. Whether it\'s mastering a new framework or adopting industry best practices, I view every challenge as an opportunity to grow and deliver even better solutions.',
     },
   ]
 

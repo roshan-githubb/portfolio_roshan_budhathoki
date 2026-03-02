@@ -37,6 +37,7 @@ const Skills = () => {
         { name: 'SQL / MySQL', level: 85 },
         { name: 'MongoDB', level: 80 },
         { name: 'SQL Server', level: 75 },
+        { name: 'PostgreSQL', level: 75 },
       ],
     },
     {
@@ -44,8 +45,8 @@ const Skills = () => {
       skills: [
         { name: 'Git & GitHub', level: 90 },
         { name: 'AWS', level: 70 },
-        { name: 'Linux', level: 75 },
-        { name: 'Postman / API Testing', level: 85 },
+        { name: 'System Design', level: 75 },
+        { name: 'REST APIs', level: 85 },
       ],
     },
   ]
