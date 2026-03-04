@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react'
+import { trackContactFormSubmit } from '@/lib/analytics'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -23,6 +24,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    
+    trackContactFormSubmit()
     
     // Create mailto link with form data
     const mailtoLink = `mailto:roshanbc9860@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(

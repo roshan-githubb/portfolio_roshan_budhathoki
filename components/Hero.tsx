@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, Mail, Linkedin, Github } from 'lucide-react'
+import { trackResumeDownload, trackSocialClick } from '@/lib/analytics'
 
 const Hero = () => {
   const techStack = [
@@ -102,7 +103,7 @@ const Hero = () => {
                 <Mail size={20} />
                 Get In Touch
               </a>
-              <a href="https://drive.google.com/file/d/1Hwg_Er_rSrWN4laCTglmRx_cT2Pa0x3B/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center justify-center gap-2">
+              <a href="https://drive.google.com/file/d/1Hwg_Er_rSrWN4laCTglmRx_cT2Pa0x3B/view?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={trackResumeDownload} className="btn-secondary inline-flex items-center justify-center gap-2">
                 <Download size={20} />
                 View and Download Resume
               </a>
@@ -119,6 +120,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/roshan-budhathoki-5a803b159/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick('linkedin')}
                 className="p-3 glass-effect rounded-full hover:bg-blue-500/20 transition-all duration-300 hover:scale-110"
               >
                 <Linkedin size={24} />
@@ -127,12 +129,14 @@ const Hero = () => {
                 href="https://github.com/roshan-githubb"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick('github')}
                 className="p-3 glass-effect rounded-full hover:bg-purple-500/20 transition-all duration-300 hover:scale-110"
               >
                 <Github size={24} />
               </a>
               <a
                 href="mailto:roshanbc9860@gmail.com"
+                onClick={() => trackSocialClick('email')}
                 className="p-3 glass-effect rounded-full hover:bg-pink-500/20 transition-all duration-300 hover:scale-110"
               >
                 <Mail size={24} />

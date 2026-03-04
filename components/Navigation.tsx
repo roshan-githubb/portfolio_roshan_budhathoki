@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { trackNavigationClick } from '@/lib/analytics'
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -25,6 +26,11 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact' },
   ]
 
+  const handleNavClick = (name: string) => {
+    trackNavigationClick(name.toLowerCase())
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -43,6 +49,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
+                onClick={() => handleNavClick(item.name)}
                 className="text-gray-300 hover:text-white transition-colors duration-200 hover:scale-110 transform"
               >
                 {item.name}
@@ -67,7 +74,7 @@ const Navigation = () => {
                 key={item.name}
                 href={item.href}
                 className="block py-2 text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => handleNavClick(item.name)}
               >
                 {item.name}
               </a>

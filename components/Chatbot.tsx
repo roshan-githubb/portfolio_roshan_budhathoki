@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react'
 import { getChatResponse } from '@/app/actions/gemini'
+import { trackChatbotOpen, trackChatbotMessage } from '@/lib/analytics'
 
 interface Message {
   text: string
@@ -46,6 +47,8 @@ const Chatbot = () => {
     setInput('')
     setIsLoading(true)
 
+    trackChatbotMessage(currentInput)
+
     try {
       const response = await getChatResponse(currentInput)
       
@@ -86,7 +89,10 @@ const Chatbot = () => {
     <>
       {/* Chat Button */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (!isOpen) trackChatbotOpen()
+          setIsOpen(!isOpen)
+        }}
         className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
