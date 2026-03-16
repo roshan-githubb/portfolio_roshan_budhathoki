@@ -13,7 +13,7 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: 'Full Stack Software Engineer',
+      title: 'Full Stack Software Engineer(Frontend Focused)',
       company: 'Saransa Media Lab',
       location: 'Remote',
       period: 'September 2025 - Present',
@@ -31,7 +31,7 @@ const Experience = () => {
       technologies: ['Next.js', 'React', 'TypeScript', 'Medusa.js', 'Mercurius', 'JavaScript', 'Tailwind CSS', 'Video.js', 'HTML', 'CSS', 'REST APIs', 'GraphQL', 'Git'],
     },
     {
-      title: 'Frontend Developer - Next.js',
+      title: 'Frontend Developer - React/Next.js',
       company: 'Freelance',
       location: 'Remote',
       period: 'June 2024 - March 2025',
@@ -71,6 +71,7 @@ const Experience = () => {
       period: 'August 2022 - July 2023',
       description: 'Implemented Microsoft Dynamics 365 Business Central ERP systems for diverse clients.',
       achievements: [
+        'Contributed to React-based frontend components and cloud-integrated interfaces while working on enterprise ERP solutions, ensuring responsive and scalable UI development',
         'Implemented MS Dynamics 365 Business Central using C#, .NET, JavaScript, and AL',
         'Designed and developed client reports using SQL Server Reporting Services (SSRS)',
         'Managed user accounts, permissions, and Active Directory configurations',
