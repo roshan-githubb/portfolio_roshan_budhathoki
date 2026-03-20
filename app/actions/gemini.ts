@@ -48,9 +48,12 @@ WORK EXPERIENCE:
    - Maintained production systems using JavaScript, TypeScript, Java, and React.js
    - Deployed updates to AWS cloud environments with minimal downtime
    - Managed MySQL databases, performed backups, and ensured data integrity
+   - Developed Python automation scripts to streamline data processing and ETL workflows for healthcare databases
+   - Automated repetitive SQL database operations including data validation, transformation, and migration tasks
+   - Created Python scripts for batch data imports, exports, and scheduled database maintenance tasks
    - Gained practical understanding of HIPAA compliance for U.S. healthcare systems
    - Created knowledge base articles to improve team efficiency
-   - Technologies: React.js, TypeScript, JavaScript, Java, SQL, AWS, MySQL, Unix/Linux
+   - Technologies: React.js, TypeScript, JavaScript, Java, Python, SQL, AWS, MySQL, Unix/Linux, ETL
 
 3. Associate Software Engineer - Agile Solutions Private Limited (merojob.com) (August 2022 - July 2023)
    Location: Gairidhara, Kathmandu
@@ -74,10 +77,10 @@ WORK EXPERIENCE:
 
 TECHNICAL SKILLS:
 - Frontend: React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS
-- Backend: Node.js, Java, Spring Boot, C#, .NET
+- Backend: Node.js, Java, Python, C#, .NET
 - Databases: SQL, MySQL, MongoDB, PostgreSQL
 - Cloud & DevOps: AWS (deployment, cloud management)
-- Tools & Others: Git, REST APIs, GraphQL, System Design, Medusa.js, Mercurius, Video.js, SSRS, Active Directory, Unix/Linux
+- Tools & Others: Git, REST APIs, GraphQL, System Design, Medusa.js, Mercurius, Video.js, SSRS, Active Directory, Unix/Linux, ETL, Python Automation
 
 KEY PROJECTS:
 
