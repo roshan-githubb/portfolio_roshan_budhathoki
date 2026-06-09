@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react'
 import { getChatResponse } from '@/app/actions/gemini'
 import { trackChatbotOpen, trackChatbotMessage } from '@/lib/analytics'
+import { logChatMessage } from '@/lib/firestore'
 
 interface Message {
   text: string
@@ -51,14 +52,17 @@ const Chatbot = () => {
 
     try {
       const response = await getChatResponse(currentInput)
-      
+
       const botResponse: Message = {
         text: response,
         isBot: true,
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, botResponse])
+
+      // Save the full exchange so you can read what visitors actually asked
+      logChatMessage(currentInput, response)
     } catch (error) {
       const errorMessage: Message = {
         text: "Sorry, I encountered an error. Please try again or contact Roshan directly at roshanbc9860@gmail.com",
@@ -93,11 +97,15 @@ const Chatbot = () => {
           if (!isOpen) trackChatbotOpen()
           setIsOpen(!isOpen)
         }}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        className="fixed bottom-8 right-6 md:bottom-10 md:right-8 z-50 p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg shadow-purple-500/30 hover:shadow-xl transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         aria-label="Open chat"
       >
+        {/* Attention pulse ring (only when closed) */}
+        {!isOpen && (
+          <span className="absolute inset-0 rounded-full bg-blue-500/40 animate-ping" />
+        )}
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div
@@ -106,6 +114,7 @@ const Chatbot = () => {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
+              className="relative z-10"
             >
               <X size={24} className="text-white" />
             </motion.div>
@@ -116,6 +125,7 @@ const Chatbot = () => {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
+              className="relative z-10"
             >
               <MessageCircle size={24} className="text-white" />
             </motion.div>

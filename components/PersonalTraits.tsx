@@ -14,28 +14,28 @@ const PersonalTraits = () => {
   const traits = [
     {
       icon: Target,
-      title: 'Ownership & Accountability',
-      description: 'I take complete ownership of features and projects from start to finish, ensuring every deliverable meets the highest quality standards. I believe in being accountable for both successes and challenges, driving projects forward with dedication and responsibility.',
+      title: 'Ownership',
+      description: 'I take features from idea to production and stand behind what I ship.',
     },
     {
       icon: Lightbulb,
       title: 'Creative Problem Solving',
-      description: 'I bring innovative thinking to every challenge, contributing creative solutions that go beyond basic requirements. By combining technical expertise with imagination, I help build products that are both functional and delightful to use.',
+      description: 'I look past the obvious fix to find solutions that scale.',
     },
     {
       icon: Zap,
       title: 'Efficient Execution',
-      description: 'I excel at transforming ideas into reality with speed and precision. My focus on efficient execution means delivering high-quality code on time, maintaining clean architecture, and consistently meeting project milestones without compromising standards.',
+      description: 'High-quality code, delivered on time, without cutting corners.',
     },
     {
       icon: Users,
-      title: 'User-Centric Mindset',
-      description: 'Every line of code I write considers the end user. I build software that prioritizes user experience, accessibility, and real-world problem-solving. By empathizing with users, I create intuitive interfaces that people genuinely enjoy using.',
+      title: 'User-Centric',
+      description: 'I build intuitive interfaces people genuinely enjoy using.',
     },
     {
       icon: Rocket,
-      title: 'Continuous Learning',
-      description: 'I embrace new technologies and methodologies with enthusiasm, constantly expanding my skill set. Whether it\'s mastering a new framework or adopting industry best practices, I view every challenge as an opportunity to grow and deliver even better solutions.',
+      title: 'Always Learning',
+      description: 'New frameworks and tools are an opportunity, not a hurdle.',
     },
   ]
 

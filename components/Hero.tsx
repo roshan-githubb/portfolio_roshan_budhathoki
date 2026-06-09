@@ -15,8 +15,9 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-fuchsia-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -47,6 +48,19 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 glass-effect rounded-full text-sm text-gray-300"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              Available for new opportunities
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
@@ -70,9 +84,28 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="text-base md:text-lg text-gray-400 mb-8"
             >
-              Fast learner and adaptable engineer crafting scalable, high-performance web applications.
-              Expertise in React, Next.js, TypeScript, Java, SQL, and MongoDB.
+              I build fast, scalable web apps end-to-end — from pixel-perfect React
+              interfaces to robust Java and Node backends.
             </motion.p>
+
+            {/* Quick Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 mb-8"
+            >
+              {[
+                { value: '3+', label: 'Years Experience' },
+                { value: '15+', label: 'Projects Shipped' },
+                { value: '20+', label: 'Technologies' },
+              ].map((stat) => (
+                <div key={stat.label} className="glass-effect rounded-xl px-3 py-4 text-center">
+                  <div className="text-2xl md:text-3xl font-bold gradient-text">{stat.value}</div>
+                  <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
 
             {/* Tech Stack Badges */}
             <motion.div

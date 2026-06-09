@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { HeartPulse, Building2, ShoppingCart, FileText, LayoutDashboard, Video, Gamepad2 } from 'lucide-react'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -12,39 +13,59 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Healthcare Management System',
-      description: 'Enterprise-grade HIPAA-compliant platform for patient management, appointments, and medical records with role-based access control and real-time data synchronization.',
-      technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS'],
+      title: 'SajiloPlay — Multi-Game Platform',
+      description: 'A single web app bundling a collection of casual games — instant, no-install play with a unified UI, score tracking and smooth, responsive gameplay.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      icon: Gamepad2,
+      gradient: 'from-violet-500/20 to-indigo-600/20',
       featured: true,
     },
     {
-      title: 'Microsoft Dynamics 365 Business Central ERP',
-      description: 'Implemented and customized ERP system for multiple clients with custom modules, reports, and integrations. Developed solutions using C#, AL language, and SQL Server Reporting Services.',
-      technologies: ['C#', 'AL Language', '.NET', 'SQL Server', 'SSRS', 'Business Central'],
+      title: 'Healthcare Management System',
+      description: 'HIPAA-compliant platform for patient records, appointments and medical data — with role-based access and real-time sync.',
+      technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS'],
+      icon: HeartPulse,
+      gradient: 'from-rose-500/20 to-red-600/20',
+      featured: true,
+    },
+    {
+      title: 'Short-Form Video Social App',
+      description: 'TikTok-inspired platform with video uploads, infinite-scroll feed, likes, comments and profiles — built for smooth playback.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Video.js'],
+      icon: Video,
+      gradient: 'from-fuchsia-500/20 to-purple-600/20',
       featured: true,
     },
     {
       title: 'Multivendor E-Commerce Platform',
-      description: 'Built scalable multivendor marketplace using Medusa.js and Mercurius open-source backend with Next.js frontend. Features vendor management, product catalogs, order processing, and payment integration.',
-      technologies: ['Next.js', 'Medusa.js', 'Mercurius', 'React', 'TypeScript', 'PostgreSQL'],
+      description: 'Scalable marketplace on Medusa.js with a Next.js storefront — vendor management, catalogs, orders and payments.',
+      technologies: ['Next.js', 'Medusa.js', 'Mercurius', 'React', 'PostgreSQL'],
+      icon: ShoppingCart,
+      gradient: 'from-emerald-500/20 to-teal-600/20',
       featured: true,
     },
     {
-      title: 'Form Builder',
-      description: 'Intuitive drag-and-drop form builder similar to Google Forms with multiple question types, conditional logic, response validation, real-time collaboration, and analytics dashboard.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-      featured: false,
-    },
-    {
       title: 'Business Admin Dashboard',
-      description: 'Comprehensive admin dashboard with sales analytics, inventory management, and order processing. Integrated Khalti payment gateway and cash on delivery. Real-time business insights for customer behavior and sales trends that directly impacted business growth.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Khalti SDK', 'Chart.js'],
+      description: 'Sales analytics, inventory and order management with Khalti payments — real-time insights that drove business growth.',
+      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Chart.js'],
+      icon: LayoutDashboard,
+      gradient: 'from-blue-500/20 to-indigo-600/20',
       featured: false,
     },
     {
-      title: 'Short-Form Video Social Media App',
-      description: 'TikTok-inspired social media platform with short video uploads, infinite scroll feed, likes, comments, and user profiles. Built responsive UI with smooth video playback and engaging user interactions.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Video.js'],
+      title: 'Drag-and-Drop Form Builder',
+      description: 'Google Forms–style builder with conditional logic, validation, real-time collaboration and an analytics dashboard.',
+      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+      icon: FileText,
+      gradient: 'from-amber-500/20 to-orange-600/20',
+      featured: false,
+    },
+    {
+      title: 'Dynamics 365 Business Central ERP',
+      description: 'Customized ERP for multiple clients — bespoke modules, reports and integrations using C#, AL and SSRS.',
+      technologies: ['C#', 'AL Language', '.NET', 'SQL Server', 'SSRS'],
+      icon: Building2,
+      gradient: 'from-sky-500/20 to-cyan-600/20',
       featured: false,
     },
   ]
@@ -73,9 +94,9 @@ const Projects = () => {
                 className="glass-effect rounded-2xl overflow-hidden card-hover group"
               >
                 {/* Project Image */}
-                <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 overflow-hidden">
+                <div className={`relative h-40 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl opacity-20">💻</div>
+                    <project.icon className="w-16 h-16 text-white/40 group-hover:text-white/70 group-hover:scale-110 transition-all duration-300" strokeWidth={1.5} />
                   </div>
                   {project.featured && (
                     <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-xs font-semibold">

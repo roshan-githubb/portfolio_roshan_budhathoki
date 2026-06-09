@@ -14,23 +14,23 @@ const About = () => {
   const highlights = [
     {
       icon: <Code2 size={32} />,
-      title: 'Full Stack Development',
-      description: 'Expert in React, Next.js, TypeScript, Java, and modern web technologies',
+      title: 'End-to-End Delivery',
+      description: 'React & Next.js front to Java, Node and SQL back',
     },
     {
       icon: <Rocket size={32} />,
-      title: 'Fast Learner & Adaptable',
-      description: 'Quick to master new technologies and adapt to changing project requirements',
+      title: 'Ships Fast',
+      description: 'Turns ideas into production features quickly',
     },
     {
       icon: <Users size={32} />,
-      title: 'Team Collaboration',
-      description: 'Experienced in Agile methodologies and cross-functional teamwork',
+      title: 'Team Player',
+      description: 'Agile workflows and cross-functional collaboration',
     },
     {
       icon: <Award size={32} />,
-      title: 'Quality Focused',
-      description: 'Committed to clean code, best practices, and performance optimization',
+      title: 'Quality First',
+      description: 'Clean code, performance and best practices',
     },
   ]
 
@@ -48,16 +48,15 @@ const About = () => {
           <div className="max-w-4xl mx-auto mb-16">
             <div className="glass-effect p-8 md:p-12 rounded-2xl">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                I&apos;m a passionate <span className="text-blue-400 font-semibold">Full Stack Engineer</span> with 
-                extensive experience in building modern, scalable web applications. As a <span className="text-purple-400 font-semibold">fast learner and adaptable developer</span>, I quickly master new technologies and frameworks, delivering end-to-end solutions with expertise in <span className="text-blue-400 font-semibold">React, Next.js, TypeScript, Java, and SQL</span>.
-              </p>
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                My journey spans diverse technologies from <span className="text-blue-400 font-semibold">JavaScript ecosystems</span> to 
-                enterprise systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve successfully adapted to various tech stacks including Medusa.js, Business Central, and cloud platforms, consistently delivering high-quality, performant solutions.
+                I&apos;m a <span className="text-blue-400 font-semibold">Full Stack Engineer</span> who builds
+                modern, scalable web apps end-to-end — strongest in <span className="text-blue-400 font-semibold">React,
+                Next.js and TypeScript</span> on the front, with <span className="text-purple-400 font-semibold">Java,
+                Node and SQL</span> on the back.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                Driven by continuous learning and innovation, I thrive on solving complex problems and quickly adapting to new challenges. 
-                I&apos;m seeking opportunities to contribute my full-stack expertise and adaptability to dynamic teams and impactful projects.
+                Over the last few years I&apos;ve shipped social platforms, e-commerce systems, healthcare tooling
+                and enterprise ERP — across startups and U.S. clients. I care about clean code, fast load times
+                and interfaces people actually enjoy using. <span className="text-purple-400 font-semibold">Currently open to new opportunities.</span>
               </p>
             </div>
           </div>

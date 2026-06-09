@@ -13,41 +13,19 @@ const Skills = () => {
   const skillCategories = [
     {
       category: 'Frontend',
-      skills: [
-        { name: 'React.js', level: 95 },
-        { name: 'Next.js', level: 92 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'JavaScript (ES6+)', level: 95 },
-        { name: 'HTML5 & CSS3', level: 95 },
-        { name: 'Tailwind CSS', level: 90 },
-      ],
+      skills: ['React.js', 'Next.js', 'TypeScript', 'JavaScript (ES6+)', 'HTML5 & CSS3', 'Tailwind CSS'],
     },
     {
       category: 'Backend',
-      skills: [
-        { name: 'Node.js', level: 80 },
-        { name: 'Java', level: 85 },
-        { name: 'Python', level: 75 },
-        { name: '.NET / C#', level: 70 },
-      ],
+      skills: ['Node.js', 'Java', 'Spring Boot', 'Python', '.NET / C#', 'REST APIs', 'GraphQL'],
     },
     {
       category: 'Database',
-      skills: [
-        { name: 'SQL / MySQL', level: 85 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'SQL Server', level: 75 },
-        { name: 'PostgreSQL', level: 75 },
-      ],
+      skills: ['SQL / MySQL', 'PostgreSQL', 'MongoDB', 'SQL Server'],
     },
     {
-      category: 'Tools & Others',
-      skills: [
-        { name: 'Git & GitHub', level: 90 },
-        { name: 'AWS', level: 70 },
-        { name: 'System Design', level: 75 },
-        { name: 'REST APIs', level: 85 },
-      ],
+      category: 'Tools & Cloud',
+      skills: ['Git & GitHub', 'AWS', 'Agile / Scrum', 'System Design', 'ETL'],
     },
   ]
 
@@ -61,35 +39,30 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title gradient-text">Skills & Expertise</h2>
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+            The tools and technologies I use to ship production-ready software
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.category}
                 initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="glass-effect p-8 rounded-2xl"
+                className="glass-effect p-8 rounded-2xl card-hover"
               >
-                <h3 className="text-2xl font-bold mb-6 text-blue-400">
+                <h3 className="text-xl font-bold mb-5 text-blue-400">
                   {category.category}
                 </h3>
-                <div className="space-y-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between mb-2">
-                        <span className="text-gray-300 font-medium">{skill.name}</span>
-                        <span className="text-purple-400 font-semibold">{skill.level}%</span>
-                      </div>
-                      <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={inView ? { width: `${skill.level}%` } : {}}
-                          transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.1 }}
-                          className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
-                        />
-                      </div>
-                    </div>
+                <div className="flex flex-wrap gap-2.5">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-gray-200 hover:border-blue-500/50 hover:bg-blue-500/10 hover:text-white transition-all duration-200"
+                    >
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </motion.div>
