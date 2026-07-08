@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { GraduationCap, Award } from 'lucide-react'
+import { GraduationCap } from 'lucide-react'
 
 const Education = () => {
   const [ref, inView] = useInView({
@@ -17,7 +17,6 @@ const Education = () => {
       institution: 'Softwarica College of IT and E-Commerce',
       university: 'Coventry University, United Kingdom',
       period: 'September 2021',
-      grade: 'First Class Honours',
       description: 'Comprehensive computing program covering software development, web technologies, databases, and system design.',
     },
     {
@@ -25,7 +24,6 @@ const Education = () => {
       institution: 'National Integrated College (NIC)',
       university: 'National Examinations Board (NEB), Nepal',
       period: 'July 2018',
-      grade: 'Distinction',
       description: 'Science stream with focus on Mathematics, Physics, and Computer Science.',
     },
     {
@@ -33,7 +31,6 @@ const Education = () => {
       institution: 'Motherland Academy',
       university: 'National Examinations Board (NEB), Nepal',
       period: 'July 2015',
-      grade: 'First Division',
       description: 'Secondary education with strong foundation in core subjects.',
     },
   ]
@@ -70,10 +67,6 @@ const Education = () => {
                     <p className="text-gray-400 text-sm mb-2">{edu.university}</p>
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <span className="text-gray-400 text-sm">{edu.period}</span>
-                      <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-300 flex items-center gap-1">
-                        <Award size={14} />
-                        {/* {edu.grade} */}
-                      </span>
                     </div>
                     <p className="text-gray-300 text-sm">{edu.description}</p>
                   </div>

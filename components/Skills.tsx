@@ -52,6 +52,9 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title gradient-text">Skills & Expertise</h2>
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+            The tools and technologies I use to ship production-ready software
+          </p>
 
           {/* Featured: Agentic AI & Development */}
           <motion.div

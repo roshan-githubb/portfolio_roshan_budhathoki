@@ -1,5 +1,6 @@
 import { initializeApp, getApps, FirebaseApp } from 'firebase/app'
 import { getAnalytics, Analytics, isSupported } from 'firebase/analytics'
+import { getFirestore, Firestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -21,33 +22,31 @@ const isFirebaseConfigured = () => {
   )
 }
 
-// Initialize Firebase only if configured
 let app: FirebaseApp | null = null
 let analytics: Analytics | null = null
+let db: Firestore | null = null
 
-const initializeFirebase = async () => {
-  if (!isFirebaseConfigured()) {
-    return
-  }
-
-  if (typeof window === 'undefined') return
-
+// Initialize on the client only
+if (typeof window !== 'undefined' && isFirebaseConfigured()) {
   try {
     app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
-    
-    const analyticsSupported = await isSupported()
-    
-    if (analyticsSupported && app) {
-      analytics = getAnalytics(app)
-    }
+
+    // Firestore is available synchronously
+    db = getFirestore(app)
+
+    // Analytics requires a support check (not available in some browsers)
+    isSupported()
+      .then((supported) => {
+        if (supported && app) {
+          analytics = getAnalytics(app)
+        }
+      })
+      .catch(() => {
+        // Silent fail
+      })
   } catch (error) {
     // Silent fail
   }
 }
 
-// Initialize on client side
-if (typeof window !== 'undefined') {
-  initializeFirebase()
-}
-
-export { app, analytics }
+export { app, analytics, db }

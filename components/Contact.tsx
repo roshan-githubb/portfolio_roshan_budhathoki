@@ -4,7 +4,13 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react'
-import { trackContactFormSubmit } from '@/lib/analytics'
+import { trackContactFormSubmit, trackSocialClick } from '@/lib/analytics'
+import { logContactSubmission } from '@/lib/firestore'
+
+// Get your free access key at https://web3forms.com — sign up with your email,
+// paste the key here, and submissions will be emailed straight to your inbox.
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'b32808c8-27be-402c-8f78-909039e5efdf'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -20,27 +26,44 @@ const Contact = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+    setStatus('idle')
+
     trackContactFormSubmit()
-    
-    // Create mailto link with form data
-    const mailtoLink = `mailto:roshanbc9860@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`
-    
-    // Open email client
-    window.location.href = mailtoLink
-    
-    // Show success message
-    setTimeout(() => {
-      alert('Opening your email client... Please send the email to complete your message.')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || `New portfolio message from ${formData.name}`,
+          message: formData.message,
+          from_name: 'Portfolio Contact Form',
+        }),
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        setStatus('success')
+        // Save a browsable copy of the submission in Firestore
+        logContactSubmission(formData)
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch (err) {
+      setStatus('error')
+    } finally {
       setIsSubmitting(false)
-    }, 500)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -116,6 +139,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/roshan-budhathoki-5a803b159/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('linkedin')}
                   className="p-4 glass-effect rounded-xl hover:bg-blue-500/20 transition-all duration-300 hover:scale-110"
                 >
                   <Linkedin size={24} />
@@ -124,12 +148,14 @@ const Contact = () => {
                   href="https://github.com/roshan-githubb"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('github')}
                   className="p-4 glass-effect rounded-xl hover:bg-purple-500/20 transition-all duration-300 hover:scale-110"
                 >
                   <Github size={24} />
                 </a>
                 <a
                   href="mailto:roshanbc9860@gmail.com"
+                  onClick={() => trackSocialClick('email')}
                   className="p-4 glass-effect rounded-xl hover:bg-pink-500/20 transition-all duration-300 hover:scale-110"
                 >
                   <Mail size={24} />
@@ -214,11 +240,19 @@ const Contact = () => {
                   className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send size={20} />
-                  {isSubmitting ? 'Opening Email...' : 'Send Message'}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
-                <p className="text-xs text-gray-500 mt-3 text-center">
-                  This will open your email client to send the message
-                </p>
+
+                {status === 'success' && (
+                  <p className="text-sm text-green-400 mt-4 text-center">
+                    ✓ Thanks! Your message has been sent — I&apos;ll get back to you soon.
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-sm text-red-400 mt-4 text-center">
+                    Something went wrong. Please email me directly at roshanbc9860@gmail.com
+                  </p>
+                )}
               </form>
             </motion.div>
           </div>

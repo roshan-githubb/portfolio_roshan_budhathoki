@@ -19,23 +19,23 @@ const About = () => {
     },
     {
       icon: <Code2 size={32} />,
-      title: 'Full Stack Development',
-      description: 'Expert in React, Next.js, TypeScript, Java, and modern web technologies',
+      title: 'End-to-End Delivery',
+      description: 'React & Next.js front to Java, Node and SQL back',
     },
     {
       icon: <Rocket size={32} />,
-      title: 'Fast Learner & Adaptable',
-      description: 'Quick to master new technologies and adapt to changing project requirements',
+      title: 'Ships Fast',
+      description: 'Turns ideas into production features quickly',
     },
     {
       icon: <Users size={32} />,
-      title: 'Team Collaboration',
-      description: 'Experienced in Agile methodologies and cross-functional teamwork',
+      title: 'Team Player',
+      description: 'Agile workflows and cross-functional collaboration',
     },
     {
       icon: <Award size={32} />,
-      title: 'Quality Focused',
-      description: 'Committed to clean code, best practices, and performance optimization',
+      title: 'Quality First',
+      description: 'Clean code, performance and best practices',
     },
   ]
 
