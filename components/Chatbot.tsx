@@ -93,9 +93,9 @@ const Chatbot = () => {
           if (!isOpen) trackChatbotOpen()
           setIsOpen(!isOpen)
         }}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         aria-label="Open chat"
       >
         <AnimatePresence mode="wait">
@@ -116,8 +116,12 @@ const Chatbot = () => {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
+              className="flex items-center gap-2"
             >
               <MessageCircle size={24} className="text-white" />
+              <span className="text-white text-sm font-semibold pr-1 whitespace-nowrap">
+                Ask about me
+              </span>
             </motion.div>
           )}
         </AnimatePresence>

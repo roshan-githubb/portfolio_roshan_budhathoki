@@ -39,8 +39,19 @@ const config: Config = {
         'float': 'float 6s ease-in-out infinite',
         'slide-up': 'slideUp 0.5s ease-out',
         'slide-down': 'slideDown 0.5s ease-out',
+        'marquee': 'marquee 30s linear infinite',
+        'glow': 'glow 3s ease-in-out infinite',
+        'spin-slow': 'spin 8s linear infinite',
       },
       keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        glow: {
+          '0%, 100%': { boxShadow: '0 0 5px rgba(139, 92, 246, 0.3)' },
+          '50%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.6)' },
+        },
         gradient: {
           '0%, 100%': {
             'background-size': '200% 200%',

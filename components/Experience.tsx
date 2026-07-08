@@ -13,22 +13,21 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: 'Full Stack Software Engineer(Frontend Focused)',
+      title: 'Full Stack Software Engineer',
       company: 'Saransa Media Lab',
       location: 'Remote',
       period: 'September 2025 - Present',
-      description: 'Building modern web applications with focus on scalable architecture and user experience.',
+      description: 'Building modern web applications with focus on scalable architecture and user experience, shipping features dramatically faster with Claude Code and agentic AI development workflows.',
       achievements: [
+        'Adopted Claude Code and agentic AI workflows to plan, build, test, and review features, cutting delivery time from weeks to days while maintaining production-quality standards',
         'Built TikTok-inspired short-form video social media app with Next.js and React featuring infinite scroll, video playback, likes, comments, and user profiles',
         'Developed multivendor e-commerce platform using Medusa.js and Mercurius backend with Next.js frontend',
-        'Created responsive and scalable UIs using Next.js 15+, React 18+, and TypeScript',
-        'Built reusable component libraries with React Hooks and Context API',
-        'Integrated RESTful APIs for dynamic data handling and real-time updates',
-        'Optimized performance through code-splitting, lazy loading, and bundle optimization',
-        'Quickly adapted to new technologies including Medusa.js ecosystem and video streaming solutions',
-        'Collaborated with designers and backend teams using Agile methodologies',
+        'Created responsive, scalable UIs with Next.js 15+, React 18+, and TypeScript, optimized through code-splitting, lazy loading, and bundle optimization',
+        'Managed AWS cloud infrastructure including EC2 instances, S3 storage, and Aurora/RDS databases for production applications',
+        'Set up and maintained CI/CD pipelines for automated builds, testing, and zero-downtime deployments',
+        'Deployed and managed Node.js applications in production using PM2 with monitoring and auto-restart strategies',
       ],
-      technologies: ['Next.js', 'React', 'TypeScript', 'Medusa.js', 'Mercurius', 'JavaScript', 'Tailwind CSS', 'Video.js', 'HTML', 'CSS', 'REST APIs', 'GraphQL', 'Git'],
+      technologies: ['Claude Code', 'Agentic AI Development', 'Next.js', 'React', 'TypeScript', 'Medusa.js', 'Mercurius', 'JavaScript', 'Tailwind CSS', 'Video.js', 'AWS EC2', 'AWS S3', 'Aurora / RDS', 'CI/CD', 'PM2', 'REST APIs', 'GraphQL', 'Git'],
     },
     {
       title: 'Frontend Developer - React/Next.js',

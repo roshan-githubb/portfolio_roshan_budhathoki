@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Target, Lightbulb, Zap, Users, Rocket } from 'lucide-react'
+import { Target, Lightbulb, Zap, Users, Rocket, Bot } from 'lucide-react'
 
 const PersonalTraits = () => {
   const [ref, inView] = useInView({
@@ -12,6 +12,11 @@ const PersonalTraits = () => {
   })
 
   const traits = [
+    {
+      icon: Bot,
+      title: 'AI-First Velocity',
+      description: 'I embraced Agentic AI early and rebuilt my entire workflow around it. By driving Claude Code through planning, coding, and review, and verifying every change myself, I deliver in days what once took weeks, while raising the quality bar, not lowering it.',
+    },
     {
       icon: Target,
       title: 'Ownership & Accountability',

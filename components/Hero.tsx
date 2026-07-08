@@ -1,14 +1,55 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowDown, Download, Mail, Linkedin, Github } from 'lucide-react'
+import { ArrowDown, Download, Mail, Linkedin, Github, Zap, Bot, Layers, Briefcase } from 'lucide-react'
 import { trackResumeDownload, trackSocialClick } from '@/lib/analytics'
+
+const roles = [
+  'Full Stack Product Engineer',
+  'Agentic AI Developer',
+  'Shipping in Days, Not Weeks',
+  'AI-Powered Product Builder',
+]
 
 const Hero = () => {
   const techStack = [
-    'React', 'Next.js', 'TypeScript', 'JavaScript', 'Java', 'SQL', 'MongoDB', 'Node.js'
+    'Agentic AI', 'Claude Code', 'Cursor', 'React', 'Next.js', 'TypeScript', 'Java', 'Node.js', 'SQL', 'MongoDB',
+    'AWS (EC2, S3, Aurora, RDS)', 'CI/CD', 'PM2', 'Any Stack ∞'
+  ]
+
+  // Typewriter effect for rotating roles
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex]
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentRole.length) {
+          setDisplayText(currentRole.slice(0, displayText.length + 1))
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000)
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(currentRole.slice(0, displayText.length - 1))
+        } else {
+          setIsDeleting(false)
+          setRoleIndex((prev) => (prev + 1) % roles.length)
+        }
+      }
+    }, isDeleting ? 40 : 80)
+    return () => clearTimeout(timeout)
+  }, [displayText, isDeleting, roleIndex])
+
+  const highlights = [
+    { icon: <Briefcase size={16} className="text-green-400" />, label: '4+ Years of Experience' },
+    { icon: <Zap size={16} className="text-yellow-400" />, label: 'Ships in Days, Not Weeks' },
+    { icon: <Bot size={16} className="text-blue-400" />, label: 'Agentic AI Workflows' },
+    { icon: <Layers size={16} className="text-purple-400" />, label: 'Any Stack. Any Framework.' },
   ]
 
   return (
@@ -17,6 +58,7 @@ const Hero = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -29,8 +71,9 @@ const Hero = () => {
             className="relative"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-              {/* Gradient border effect */}
-              
+              {/* Rotating gradient ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow opacity-70 blur-sm"></div>
+              <div className="absolute inset-1 rounded-full bg-slate-950"></div>
               <Image
                 src="/profile.jpg"
                 alt="Roshan Budhathoki"
@@ -59,8 +102,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold mb-6 text-gray-300">
-                Full Stack Engineer
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold mb-6 text-gray-300 min-h-[2.5rem] md:min-h-[3rem]">
+                {displayText}
+                <span className="text-blue-400 animate-pulse">|</span>
               </h2>
             </motion.div>
 
@@ -68,11 +112,31 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="text-base md:text-lg text-gray-400 mb-8"
+              className="text-base md:text-lg text-gray-400 mb-6"
             >
-              Fast learner and adaptable engineer crafting scalable, high-performance web applications.
-              Expertise in React, Next.js, TypeScript, Java, SQL, and MongoDB.
+              Full Stack Product Engineer with <span className="text-green-400 font-semibold">4+ years of experience</span> who
+              transitioned from manual development to <span className="text-purple-400 font-semibold">Agentic AI development</span>. I drive Claude Code
+              across the entire product lifecycle to ship high-quality products <span className="text-pink-400 font-semibold">in days, not weeks</span>,
+              in any tool, language, or framework.
             </motion.p>
+
+            {/* Highlight chips */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-6"
+            >
+              {highlights.map((item) => (
+                <span
+                  key={item.label}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 animate-glow"
+                >
+                  {item.icon}
+                  {item.label}
+                </span>
+              ))}
+            </motion.div>
 
             {/* Tech Stack Badges */}
             <motion.div
@@ -84,7 +148,7 @@ const Hero = () => {
               {techStack.map((tech, index) => (
                 <span
                   key={tech}
-                  className="px-4 py-2 glass-effect rounded-full text-sm font-medium hover:bg-white/10 transition-all duration-300"
+                  className="px-4 py-2 glass-effect rounded-full text-sm font-medium hover:bg-white/10 hover:scale-110 transition-all duration-300"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {tech}

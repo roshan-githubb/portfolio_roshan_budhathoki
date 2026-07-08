@@ -8,13 +8,13 @@ import FirebaseAnalytics from '@/components/FirebaseAnalytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Roshan Budhathoki - Full Stack Engineer',
-  description: 'Experienced Full Stack Engineer specializing in React, Next.js, TypeScript, JavaScript, Java, SQL, and MongoDB. Building scalable, high-performance web applications with modern technologies.',
-  keywords: 'Full Stack Engineer, Full Stack Developer, React, Next.js, TypeScript, JavaScript, Java, Spring Boot, SQL, MongoDB, Node.js, Web Developer, Software Engineer, Kathmandu, Nepal',
+  title: 'Roshan Budhathoki - Full Stack Product Engineer | Agentic AI Developer',
+  description: 'Full Stack Product Engineer and Agentic AI Developer with 4+ years of experience, shipping products in days instead of weeks with AI-driven workflows (Claude Code, Cursor). Expert in React, Next.js, TypeScript, Java, SQL, and MongoDB, ready to ship in any tool, language, or framework.',
+  keywords: 'Full Stack Product Engineer, Agentic AI Developer, AI-Powered Development, Claude Code, Cursor, Full Stack Engineer, React, Next.js, TypeScript, JavaScript, Java, Spring Boot, SQL, MongoDB, Node.js, Web Developer, Software Engineer, Kathmandu, Nepal',
   authors: [{ name: 'Roshan Budhathoki' }],
   openGraph: {
-    title: 'Roshan Budhathoki - Full Stack Engineer',
-    description: 'Experienced Full Stack Engineer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable, high-performance applications.',
+    title: 'Roshan Budhathoki - Full Stack Product Engineer | Agentic AI Developer',
+    description: 'Shipping products in days instead of weeks with Agentic AI development. Full Stack Product Engineer working across any tool, language, or framework, with quality-first output.',
     type: 'website',
     locale: 'en_US',
   },

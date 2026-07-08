@@ -30,6 +30,12 @@ const Projects = () => {
       featured: true,
     },
     {
+      title: 'Multi-Games Arcade App',
+      description: 'All-in-one arcade platform featuring classic games like Snake, Flappy Bird, 2048, Color Switch, and many more. Built with smooth animations, score tracking, and responsive controls for both desktop and mobile play.',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Canvas API', 'Tailwind CSS'],
+      featured: true,
+    },
+    {
       title: 'Form Builder',
       description: 'Intuitive drag-and-drop form builder similar to Google Forms with multiple question types, conditional logic, response validation, real-time collaboration, and analytics dashboard.',
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],

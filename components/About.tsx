@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code2, Rocket, Users, Award } from 'lucide-react'
+import { Code2, Rocket, Users, Award, Bot } from 'lucide-react'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -12,6 +12,11 @@ const About = () => {
   })
 
   const highlights = [
+    {
+      icon: <Bot size={32} />,
+      title: 'Agentic AI Engineering',
+      description: 'Building with Claude Code and AI-driven workflows to ship products dramatically faster',
+    },
     {
       icon: <Code2 size={32} />,
       title: 'Full Stack Development',
@@ -48,21 +53,18 @@ const About = () => {
           <div className="max-w-4xl mx-auto mb-16">
             <div className="glass-effect p-8 md:p-12 rounded-2xl">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                I&apos;m a passionate <span className="text-blue-400 font-semibold">Full Stack Engineer</span> with 
-                extensive experience in building modern, scalable web applications. As a <span className="text-purple-400 font-semibold">fast learner and adaptable developer</span>, I quickly master new technologies and frameworks, delivering end-to-end solutions with expertise in <span className="text-blue-400 font-semibold">React, Next.js, TypeScript, Java, and SQL</span>.
+                I ship <span className="text-blue-400 font-semibold">products</span>, not just code. <span className="text-green-400 font-semibold">4+ years</span> as a Full Stack Product Engineer. Since going all-in on <span className="text-purple-400 font-semibold">Agentic AI</span>, I build in days what used to take weeks. Same quality bar, <span className="text-pink-400 font-semibold">a fraction of the time</span>.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                My journey spans diverse technologies from <span className="text-blue-400 font-semibold">JavaScript ecosystems</span> to 
-                enterprise systems using <span className="text-purple-400 font-semibold">Java, Spring Boot, and .NET</span>. I&apos;ve successfully adapted to various tech stacks including Medusa.js, Business Central, and cloud platforms, consistently delivering high-quality, performant solutions.
+                Healthcare platforms, e-commerce marketplaces, video social apps, all delivered <span className="text-blue-400 font-semibold">end to end</span>, from UI to database to AWS deployment. And with agentic development, <span className="text-purple-400 font-semibold">your stack is my stack</span>: any language, any framework, production-ready from day one.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                Driven by continuous learning and innovation, I thrive on solving complex problems and quickly adapting to new challenges. 
-                I&apos;m seeking opportunities to contribute my full-stack expertise and adaptability to dynamic teams and impactful projects.
+                If you need an engineer who <span className="text-blue-400 font-semibold">takes ownership</span>, <span className="text-purple-400 font-semibold">moves fast</span>, and <span className="text-pink-400 font-semibold">raises the bar</span>, let&apos;s talk.
               </p>
             </div>
           </div>
             
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {highlights.map((item, index) => (
               <motion.div
                 key={item.title}
