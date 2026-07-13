@@ -74,14 +74,16 @@ const Hero = () => {
               {/* Rotating gradient ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow opacity-70 blur-sm"></div>
               <div className="absolute inset-1 rounded-full bg-slate-950"></div>
-              <Image
-                src="/profile.jpg"
-                alt="Roshan Budhathoki"
-                width={384}
-                height={384}
-                className="absolute inset-2 rounded-full object-cover"
-                priority
-              />
+              <div className="absolute inset-2 rounded-full overflow-hidden">
+                <Image
+                  src="/profile.jpg"
+                  alt="Roshan Budhathoki"
+                  fill
+                  sizes="(max-width: 768px) 256px, 384px"
+                  className="object-cover scale-110 origin-[50%_30%]"
+                  priority
+                />
+              </div>
             </div>
           </motion.div>
 
