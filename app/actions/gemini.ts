@@ -2,8 +2,20 @@
 
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-// Server-only key — never exposed to the browser (no NEXT_PUBLIC_ prefix).
-const apiKey = process.env.GEMINI_API_KEY
+// Prefer the server-only key (never exposed to the browser). Fall back to the
+// NEXT_PUBLIC_ name so existing deploys keep working even if the env var there
+// was set under the old public name. This file is a 'use server' action, so the
+// key is read on the server only and is never shipped in a client bundle.
+const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY
+
+if (!apiKey) {
+  // Visible in Vercel logs — makes a missing key obvious instead of silently
+  // degrading to canned fallback replies.
+  console.warn(
+    '[chatbot] No Gemini API key found. Set GEMINI_API_KEY in your environment ' +
+      '(Vercel → Settings → Environment Variables). Serving fallback replies.'
+  )
+}
 
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null
 
