@@ -245,7 +245,7 @@ const Contact = () => {
 
                 {status === 'success' && (
                   <p className="text-sm text-green-400 mt-4 text-center">
-                    ✓ Thanks! Your message has been sent — I&apos;ll get back to you soon.
+                    ✓ Thanks! Your message has been sent. I&apos;ll get back to you soon.
                   </p>
                 )}
                 {status === 'error' && (

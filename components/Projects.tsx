@@ -13,8 +13,8 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'SajiloPlay — Multi-Game Platform',
-      description: 'A single web app bundling a collection of casual games — instant, no-install play with a unified UI, score tracking and smooth, responsive gameplay.',
+      title: 'SajiloPlay: Multi-Game Platform',
+      description: 'A single web app bundling a collection of casual games with instant, no-install play, a unified UI, score tracking and smooth, responsive gameplay.',
       technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
       icon: Gamepad2,
       gradient: 'from-violet-500/20 to-indigo-600/20',
@@ -22,7 +22,7 @@ const Projects = () => {
     },
     {
       title: 'Healthcare Management System',
-      description: 'HIPAA-compliant platform for patient records, appointments and medical data — with role-based access and real-time sync.',
+      description: 'HIPAA-compliant platform for patient records, appointments and medical data, with role-based access and real-time sync.',
       technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS'],
       icon: HeartPulse,
       gradient: 'from-rose-500/20 to-red-600/20',
@@ -30,7 +30,7 @@ const Projects = () => {
     },
     {
       title: 'Short-Form Video Social App',
-      description: 'TikTok-inspired platform with video uploads, infinite-scroll feed, likes, comments and profiles — built for smooth playback.',
+      description: 'TikTok-inspired platform with video uploads, infinite-scroll feed, likes, comments and profiles, built for smooth playback.',
       technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Video.js'],
       icon: Video,
       gradient: 'from-fuchsia-500/20 to-purple-600/20',
@@ -38,7 +38,7 @@ const Projects = () => {
     },
     {
       title: 'Multivendor E-Commerce Platform',
-      description: 'Scalable marketplace on Medusa.js with a Next.js storefront — vendor management, catalogs, orders and payments.',
+      description: 'Scalable marketplace on Medusa.js with a Next.js storefront, featuring vendor management, catalogs, orders and payments.',
       technologies: ['Next.js', 'Medusa.js', 'Mercurius', 'React', 'PostgreSQL'],
       icon: ShoppingCart,
       gradient: 'from-emerald-500/20 to-teal-600/20',
@@ -46,7 +46,7 @@ const Projects = () => {
     },
     {
       title: 'Business Admin Dashboard',
-      description: 'Sales analytics, inventory and order management with Khalti payments — real-time insights that drove business growth.',
+      description: 'Sales analytics, inventory and order management with Khalti payments, delivering real-time insights that drove business growth.',
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Chart.js'],
       icon: LayoutDashboard,
       gradient: 'from-blue-500/20 to-indigo-600/20',
@@ -54,7 +54,7 @@ const Projects = () => {
     },
     {
       title: 'Drag-and-Drop Form Builder',
-      description: 'Google Forms–style builder with conditional logic, validation, real-time collaboration and an analytics dashboard.',
+      description: 'Google Forms-style builder with conditional logic, validation, real-time collaboration and an analytics dashboard.',
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       icon: FileText,
       gradient: 'from-amber-500/20 to-orange-600/20',
@@ -62,7 +62,7 @@ const Projects = () => {
     },
     {
       title: 'Dynamics 365 Business Central ERP',
-      description: 'Customized ERP for multiple clients — bespoke modules, reports and integrations using C#, AL and SSRS.',
+      description: 'Customized ERP for multiple clients, with bespoke modules, reports and integrations using C#, AL and SSRS.',
       technologies: ['C#', 'AL Language', '.NET', 'SQL Server', 'SSRS'],
       icon: Building2,
       gradient: 'from-sky-500/20 to-cyan-600/20',
