@@ -31,7 +31,7 @@ const Experience = () => {
       technologies: ['Claude Code', 'Agentic AI Development', 'Next.js', 'React', 'TypeScript', 'Medusa.js', 'Mercurius', 'JavaScript', 'Tailwind CSS', 'Video.js', 'AWS EC2', 'AWS S3', 'Aurora / RDS', 'CI/CD', 'PM2', 'REST APIs', 'GraphQL', 'Git'],
     },
     {
-      title: 'Frontend Developer — React / Next.js',
+      title: 'Frontend Developer (React / Next.js)',
       company: 'Freelance',
       location: 'Remote',
       period: 'Jun 2024 - Mar 2025',
