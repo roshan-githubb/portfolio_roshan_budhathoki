@@ -1,14 +1,26 @@
 import { db } from './firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { getVisitorLocation } from '@/app/actions/geo'
+
+// Looked up once per page load and reused for every chat message after that.
+let locationPromise: ReturnType<typeof getVisitorLocation> | null = null
+const getLocation = () => {
+  locationPromise ??= getVisitorLocation().catch(() => ({ country: '', region: '', city: '' }))
+  return locationPromise
+}
 
 // Logs each chatbot exchange (visitor prompt + bot reply) so you can read
 // what people actually asked, in the Firestore console under the "chats" collection.
 export const logChatMessage = async (prompt: string, reply: string) => {
   if (!db) return
   try {
+    const { country, region, city } = await getLocation()
     await addDoc(collection(db, 'chats'), {
       prompt,
       reply,
+      country,
+      region,
+      city,
       createdAt: serverTimestamp(),
       path: typeof window !== 'undefined' ? window.location.pathname : '',
       userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
