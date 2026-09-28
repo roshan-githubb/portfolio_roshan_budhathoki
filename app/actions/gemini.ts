@@ -34,7 +34,7 @@ ABOUT ROSHAN:
 
 WORK EXPERIENCE:
 
-1. Full Stack Engineer (Frontend Focused) - Saransa Media Lab (September 2025 - Present)
+1. Full Stack Software Engineer - Saransa Media Lab (September 2025 - Present)
    Location: Remote
    - Adopted Claude Code and agentic AI development workflows to plan, build, test, and review features, cutting delivery time from weeks to days while maintaining production-quality standards
    - Built SajiloPlay, a multi-game web platform bundling a collection of casual games with a unified UI, score tracking, and instant no-install play
@@ -46,7 +46,7 @@ WORK EXPERIENCE:
    - Deployed and managed Node.js applications in production using PM2 with monitoring and auto-restart strategies
    - Technologies: Claude Code, Agentic AI Development, Next.js, React, TypeScript, Medusa.js, Mercurius, JavaScript, Tailwind CSS, Video.js, AWS EC2, AWS S3, Aurora/RDS, CI/CD, PM2, REST APIs, GraphQL, Git
 
-2. Frontend Developer - Next.js - Freelance (June 2024 - March 2025)
+2. Frontend Developer (React / Next.js) - Freelance (June 2024 - March 2025)
    Location: Remote
    - Developed responsive and scalable user interfaces of Admin Panel and dashboards with charts using Next.js 15+, React 18+, JavaScript (ES6+), HTML, and CSS
    - Collaborated closely with designers and backend teams to deliver seamless user experiences
@@ -72,19 +72,19 @@ WORK EXPERIENCE:
    - Created knowledge base articles to improve team efficiency
    - Technologies: React.js, TypeScript, JavaScript, Java, Python, SQL, AWS, MySQL, Unix/Linux, ETL
 
-4. Associate Software Engineer - Agile Solutions Private Limited (merojob.com) (August 2022 - July 2023)
-   Location: Gairidhara, Kathmandu
+4. Associate Software Engineer - Agile Solutions (merojob.com) (August 2022 - July 2023)
+   Location: Kathmandu, Nepal
    - Implemented Microsoft Dynamics 365 Business Central ERP systems for diverse clients
-   - Implemented MS Dynamics 365 Business Central using C#, .NET, JavaScript, and AL
+   - Built ERP modules and React-based interfaces using C#, .NET, JavaScript, and AL
    - Designed and developed client reports using SQL Server Reporting Services (SSRS)
    - Managed user accounts, permissions, and Active Directory configurations
    - Migrated customer data into MS SQL Server with validation and error resolution
    - Provided end-user support and training for ERP system adoption
    - Prepared technical documentation and configuration manuals
-   - Technologies: C#, .NET, JavaScript, AL, SQL Server, SSRS, Active Directory
+   - Technologies: C#, .NET, JavaScript, AL, React, SQL Server, SSRS, Active Directory
 
-5. Quality Analyst Intern - Inficare Private Limited (January 2022 - July 2022)
-   Location: Gairidhara, Kathmandu
+5. Quality Analyst Intern - Inficare (January 2022 - July 2022)
+   Location: Kathmandu, Nepal
    - Focused on software quality assurance through manual testing and defect management
    - Executed manual test cases to ensure software functionality and quality
    - Logged and tracked defects, collaborating with developers for resolution
@@ -102,46 +102,41 @@ TECHNICAL SKILLS:
 
 KEY PROJECTS:
 
-0. SajiloPlay - Multi-Game Platform
+1. SajiloPlay: Multi-Game Platform
    - A single web app bundling a collection of casual games with a unified UI, score tracking, and instant no-install play
    - Smooth, responsive gameplay built for the browser
    - Technologies: Next.js, React, TypeScript, Tailwind CSS
 
-1. Short-Form Video Social Media App
-   - TikTok-inspired social media platform with short video uploads, infinite scroll feed, likes, comments, and user profiles
-   - Built responsive UI with smooth video playback and engaging user interactions
-   - Technologies: Next.js, React, TypeScript, Tailwind CSS, Video.js
-
-2. Multivendor E-Commerce Platform
-   - Scalable multivendor marketplace using Medusa.js and Mercurius open-source backend with Next.js frontend
-   - Features vendor management, product catalogs, order processing, and payment integration
-   - Technologies: Next.js, Medusa.js, Mercurius, React, TypeScript, PostgreSQL
-
-3. Healthcare Management System
+2. Healthcare Management System
    - Enterprise-grade HIPAA-compliant platform for patient management, appointments, and medical records
    - Role-based access control and real-time data synchronization
    - Technologies: React, TypeScript, Java, Spring Boot, MySQL, AWS
 
-4. Microsoft Dynamics 365 Business Central ERP
-   - Implemented and customized ERP system for multiple clients with custom modules, reports, and integrations
-   - Developed solutions using C#, AL language, and SQL Server Reporting Services
-   - Technologies: C#, AL Language, .NET, SQL Server, SSRS, Business Central
+3. Short-Form Video Social App
+   - TikTok-inspired social media platform with short video uploads, infinite scroll feed, likes, comments, and user profiles
+   - Built responsive UI with smooth video playback and engaging user interactions
+   - Technologies: Next.js, React, TypeScript, Tailwind CSS, Video.js
 
-5. Multi-Games Arcade App
-   - All-in-one arcade platform featuring classic games like Snake, Flappy Bird, 2048, Color Switch, and many more
-   - Smooth animations, score tracking, and responsive controls for desktop and mobile
-   - Technologies: React, Next.js, TypeScript, Canvas API, Tailwind CSS
+4. Multivendor E-Commerce Platform
+   - Scalable multivendor marketplace using Medusa.js and Mercurius open-source backend with Next.js frontend
+   - Features vendor management, product catalogs, order processing, and payment integration
+   - Technologies: Next.js, Medusa.js, Mercurius, React, PostgreSQL
 
-6. Form Builder
-   - Intuitive drag-and-drop form builder similar to Google Forms
-   - Multiple question types, conditional logic, response validation, real-time collaboration, and analytics dashboard
-   - Technologies: React, TypeScript, Node.js, MongoDB, Tailwind CSS
-
-7. Business Admin Dashboard
+5. Business Admin Dashboard
    - Comprehensive admin dashboard with sales analytics, inventory management, and order processing
    - Integrated Khalti payment gateway and cash on delivery
    - Real-time business insights for customer behavior and sales trends
    - Technologies: React, TypeScript, Node.js, MongoDB, Khalti SDK, Chart.js
+
+6. Drag-and-Drop Form Builder
+   - Intuitive drag-and-drop form builder similar to Google Forms
+   - Multiple question types, conditional logic, response validation, real-time collaboration, and analytics dashboard
+   - Technologies: React, TypeScript, Node.js, MongoDB, Tailwind CSS
+
+7. Dynamics 365 Business Central ERP
+   - Implemented and customized ERP system for multiple clients with custom modules, reports, and integrations
+   - Developed solutions using C#, AL language, and SQL Server Reporting Services
+   - Technologies: C#, AL Language, .NET, SQL Server, SSRS, Business Central
 
 EDUCATION:
 - Bachelor (Hons) Computing - Softwarica College of IT and E-Commerce (affiliated with Coventry University, United Kingdom), September 2021

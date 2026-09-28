@@ -33,8 +33,6 @@ const Contact = () => {
     setIsSubmitting(true)
     setStatus('idle')
 
-    trackContactFormSubmit()
-
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -53,6 +51,8 @@ const Contact = () => {
 
       if (data.success) {
         setStatus('success')
+        // Only count messages that actually went through
+        trackContactFormSubmit()
         // Save a browsable copy of the submission in Firestore
         logContactSubmission(formData)
         setFormData({ name: '', email: '', subject: '', message: '' })

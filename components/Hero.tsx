@@ -182,7 +182,7 @@ const Hero = () => {
                 <Mail size={20} />
                 Get In Touch
               </a>
-              <a href="https://drive.google.com/file/d/1Hwg_Er_rSrWN4laCTglmRx_cT2Pa0x3B/view?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={trackResumeDownload} className="btn-secondary inline-flex items-center justify-center gap-2">
+              <a href="/Roshan_Budhathoki_Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={trackResumeDownload} className="btn-secondary inline-flex items-center justify-center gap-2">
                 <Download size={20} />
                 View and Download Resume
               </a>
