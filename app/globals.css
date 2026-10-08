@@ -38,16 +38,181 @@
     @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
   }
 
+  /* 3D push buttons: a solid bottom edge that lifts on hover and presses in on click */
   .btn-primary {
-    @apply px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105;
+    @apply px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold transition-all duration-200;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 5px 0 0 #312e81, 0 12px 22px -8px rgba(124, 58, 237, 0.65);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 7px 0 0 #312e81, 0 18px 30px -8px rgba(124, 58, 237, 0.75);
+  }
+
+  .btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 0 #312e81, 0 4px 10px -4px rgba(124, 58, 237, 0.5);
   }
 
   .btn-secondary {
-    @apply px-8 py-4 border-2 border-blue-500 rounded-full font-semibold hover:bg-blue-500/10 transition-all duration-300;
+    @apply px-8 py-4 border-2 border-blue-500 rounded-full font-semibold bg-slate-950/60 hover:bg-blue-950/60 transition-all duration-200;
+    box-shadow: 0 5px 0 0 #1e3a8a, 0 12px 22px -8px rgba(59, 130, 246, 0.45);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 0 #1e3a8a, 0 18px 30px -8px rgba(59, 130, 246, 0.55);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 0 #1e3a8a, 0 4px 10px -4px rgba(59, 130, 246, 0.4);
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-bold mb-12 text-center;
+    @apply text-4xl md:text-5xl font-bold mb-12 text-center text-3d;
+  }
+
+  /* Extruded 3D lettering. Stacked 1px drop-shadows build a solid edge (each
+     one offsets the previous result), then a soft cast shadow. Uses filter
+     rather than text-shadow so it also works on gradient (clipped) text. */
+  .text-3d {
+    filter: drop-shadow(0 1px 0 #6d28d9) drop-shadow(0 1px 0 #5b21b6) drop-shadow(0 1px 0 #4c1d95)
+      drop-shadow(0 1px 0 #2e1065) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
+  }
+
+  /* Glossy 3D icon tile: lit top edge, solid extruded bottom (--edge colour),
+     cast shadow and sheen. Inside a TiltCard it floats above the card,
+     shifting with the tilt (--tilt-x / --tilt-y, -1..1). Uses the individual
+     `translate` property so it composes with Tailwind transform utilities. */
+  .icon-3d {
+    --edge: #3730a3;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 4px 0 0 var(--edge),
+      0 5px 0 0 rgba(0, 0, 0, 0.35), 0 14px 20px -6px rgba(0, 0, 0, 0.65), 0 0 22px -6px rgba(139, 92, 246, 0.55);
+    translate: calc(var(--tilt-x, 0) * 7px) calc(var(--tilt-y, 0) * 7px);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .icon-3d::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.06) 42%, transparent 60%);
+  }
+
+  .icon-3d > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .group\/tilt:hover .icon-3d {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 6px 0 0 var(--edge),
+      0 7px 0 0 rgba(0, 0, 0, 0.35), 0 22px 28px -8px rgba(0, 0, 0, 0.7), 0 0 30px -4px rgba(139, 92, 246, 0.7);
+  }
+
+  /* Perspective grid floor for project card banners */
+  .grid-floor {
+    position: absolute;
+    left: -50%;
+    right: -50%;
+    top: 45%;
+    height: 120%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+    background-size: 34px 34px;
+    transform: perspective(220px) rotateX(58deg);
+    transform-origin: center top;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+  }
+
+  /* Cards float in 3D like the background shapes: a slow bob and sway, each at
+     its own depth and phase. Uses the individual translate/rotate properties so
+     it composes with TiltCard's transform (tilt + entrance). The parent gets a
+     perspective so the sway and depth read as real 3D. Used on short cards and
+     the photo; long text cards stay still for easy reading. */
+  *:has(> .card-float) {
+    perspective: 1400px;
+  }
+
+  .card-float {
+    --float-z: 0px;
+    --float-rot: 3deg;
+    animation: card-sway 7s ease-in-out infinite;
+  }
+
+  .card-float:nth-child(3n + 1) {
+    --float-z: 25px;
+    animation-duration: 7.5s;
+    animation-delay: -1.2s;
+  }
+
+  .card-float:nth-child(3n + 2) {
+    --float-z: -20px;
+    animation-name: card-rock;
+    animation-duration: 8.5s;
+    animation-delay: -4s;
+  }
+
+  .card-float:nth-child(3n) {
+    --float-z: 10px;
+    animation-duration: 6.5s;
+    animation-delay: -2.6s;
+  }
+
+  /* Sways side to side around a slightly tilted vertical axis */
+  @keyframes card-sway {
+    0%,
+    100% {
+      translate: 0 0 var(--float-z);
+      rotate: 0.35 1 0 calc(var(--float-rot) * -1);
+    }
+    50% {
+      translate: 0 -10px var(--float-z);
+      rotate: 0.35 1 0 var(--float-rot);
+    }
+  }
+
+  /* Rocks forward and back around a slightly tilted horizontal axis */
+  @keyframes card-rock {
+    0%,
+    100% {
+      translate: 0 -8px var(--float-z);
+      rotate: 1 0.3 0 calc(var(--float-rot) * -0.8);
+    }
+    50% {
+      translate: 0 2px var(--float-z);
+      rotate: 1 0.3 0 calc(var(--float-rot) * 0.8);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-float {
+      animation: none;
+    }
+  }
+
+  .float-3d {
+    animation: float3d 4s ease-in-out infinite;
+  }
+
+  @keyframes float3d {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-3d {
+      animation: none;
+    }
   }
 
   .card-hover {

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, Mail, Linkedin, Github, Zap, Bot, Layers, Briefcase } from 'lucide-react'
 import { trackResumeDownload, trackSocialClick } from '@/lib/analytics'
+import TiltCard from './TiltCard'
 
 const roles = [
   'Full Stack Product Engineer',
@@ -70,7 +71,7 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <TiltCard maxTilt={14} className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full">
               {/* Rotating gradient ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow opacity-70 blur-sm"></div>
               <div className="absolute inset-1 rounded-full bg-slate-950"></div>
@@ -84,7 +85,7 @@ const Hero = () => {
                   priority
                 />
               </div>
-            </div>
+            </TiltCard>
           </motion.div>
 
           {/* Text Content */}
@@ -107,7 +108,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-3d">
                 Hi, I&apos;m <span className="gradient-text">Roshan Budhathoki</span>
               </h1>
             </motion.div>

@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import TiltCard from './TiltCard'
 import { Code2, Rocket, Users, Award, Bot } from 'lucide-react'
 
 const About = () => {
@@ -66,19 +67,19 @@ const About = () => {
             
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {highlights.map((item, index) => (
-              <motion.div
+              <TiltCard
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-effect p-6 rounded-xl card-hover text-center"
+                className="glass-effect p-6 rounded-xl text-center"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 icon-3d mb-4">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p className="text-gray-400 text-sm">{item.description}</p>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
         </motion.div>

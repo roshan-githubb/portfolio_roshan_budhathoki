@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import TiltCard from './TiltCard'
 import { Bot, Rocket, Infinity as InfinityIcon, ShieldCheck, Workflow, Sparkles } from 'lucide-react'
 
 const AgenticAI = () => {
@@ -94,37 +95,38 @@ const AgenticAI = () => {
           {/* Stats row */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
             {stats.map((stat, index) => (
-              <motion.div
+              <TiltCard
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-effect p-6 rounded-2xl text-center card-hover"
+                className="glass-effect p-6 rounded-2xl text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">{stat.value}</div>
+                <div className="text-3xl md:text-4xl font-bold gradient-text text-3d mb-2">{stat.value}</div>
                 <div className="text-gray-400 text-sm">{stat.label}</div>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
 
           {/* Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
             {pillars.map((pillar, index) => (
-              <motion.div
+              <TiltCard
                 key={pillar.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="glass-effect p-6 rounded-2xl card-hover group"
+                float={false}
+                className="glass-effect p-6 rounded-2xl group"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 icon-3d mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
                   {pillar.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
                   {pillar.title}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{pillar.description}</p>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
 

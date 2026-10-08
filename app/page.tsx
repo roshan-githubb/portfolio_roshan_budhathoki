@@ -10,20 +10,44 @@ import Projects from '@/components/Projects'
 import PersonalTraits from '@/components/PersonalTraits'
 import Contact from '@/components/Contact'
 import Chatbot from '@/components/Chatbot'
+import Background3D from '@/components/Background3D'
+import DepthSection, { DepthAnchorScroll } from '@/components/DepthSection'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    // overflow-x-clip: sections growing as they fly past must not cause a horizontal scrollbar
+    <main className="min-h-screen overflow-x-clip">
+      <Background3D />
+      <DepthAnchorScroll />
       <Navigation />
-      <Hero />
-      <About />
-      <AgenticAI />
-      <Skills />
-      <Experience />
-      <Projects />
-      <PersonalTraits />
-      <Education />
-      <Contact />
+      {/* The hero is already in front of you on load, so it only moves away */}
+      <DepthSection approach={false}>
+        <Hero />
+      </DepthSection>
+      <DepthSection>
+        <About />
+      </DepthSection>
+      <DepthSection>
+        <AgenticAI />
+      </DepthSection>
+      <DepthSection>
+        <Skills />
+      </DepthSection>
+      <DepthSection>
+        <Experience />
+      </DepthSection>
+      <DepthSection>
+        <Projects />
+      </DepthSection>
+      <DepthSection>
+        <PersonalTraits />
+      </DepthSection>
+      <DepthSection>
+        <Education />
+      </DepthSection>
+      <DepthSection>
+        <Contact />
+      </DepthSection>
       <Chatbot />
     </main>
   )

@@ -122,7 +122,7 @@ const Contact = () => {
                     href={info.link}
                     className="flex items-center gap-4 glass-effect p-4 rounded-xl hover:bg-white/10 transition-all duration-300 group"
                   >
-                    <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg group-hover:scale-110 transition-transform">
+                    <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 icon-3d rounded-lg group-hover:scale-110 transition-transform">
                       {info.icon}
                     </div>
                     <div>
