@@ -5,12 +5,21 @@ import * as THREE from 'three'
 
 const CAMERA_Z = 10
 const FOV = 50
+// World units the camera travels forward per pixel scrolled
+const FORWARD = 0.012
+// Distance between shapes along the flight path
+const SHAPE_SPACING = 7
+const BG = '#0b0c12'
+// Shapes fade in between these distances ahead of the camera, so they appear
+// once they're near enough to sit toward the sides rather than at the centre
+const FADE_START = 28
+const FADE_FULL = 16
 
 type ShapeKind = 'ico' | 'octa' | 'dodeca' | 'torus' | 'knot'
 
 type ShapeSpec = {
   kind: ShapeKind
-  side: 1 | -1
+  x: number
   y: number
   z: number
   scale: number
@@ -18,19 +27,28 @@ type ShapeSpec = {
   wire: boolean
 }
 
-// Spread down the page, alternating sides so they frame the content column
-const SHAPES: ShapeSpec[] = [
-  { kind: 'ico', side: 1, y: 3.2, z: -7, scale: 0.8, color: '#8b5cf6', wire: true },
-  { kind: 'knot', side: -1, y: -10.5, z: -6, scale: 0.65, color: '#3b82f6', wire: false },
-  { kind: 'octa', side: 1, y: -7.5, z: -4, scale: 0.85, color: '#ec4899', wire: false },
-  { kind: 'torus', side: -1, y: -12, z: -5, scale: 0.85, color: '#06b6d4', wire: false },
-  { kind: 'dodeca', side: 1, y: -16, z: -6, scale: 1, color: '#6366f1', wire: true },
-  { kind: 'ico', side: -1, y: -20, z: -4, scale: 0.75, color: '#a855f7', wire: false },
-  { kind: 'knot', side: 1, y: -24.5, z: -5, scale: 0.6, color: '#ec4899', wire: false },
-  { kind: 'octa', side: -1, y: -29, z: -5, scale: 0.9, color: '#3b82f6', wire: true },
-  { kind: 'ico', side: 1, y: -33, z: -4, scale: 0.8, color: '#06b6d4', wire: false },
-  { kind: 'torus', side: -1, y: -37, z: -6, scale: 0.8, color: '#8b5cf6', wire: true },
-]
+const KINDS: ShapeKind[] = ['ico', 'knot', 'octa', 'torus', 'dodeca']
+const COLORS = ['#8b5cf6', '#3b82f6', '#ec4899', '#06b6d4', '#6366f1', '#a855f7']
+
+// Shapes placed along the path ahead of the camera, alternating sides so they
+// fly past the content column rather than through it
+function makeShapeSpecs(travel: number, isMobile: boolean): ShapeSpec[] {
+  const count = Math.ceil((travel + 30) / SHAPE_SPACING)
+  return Array.from({ length: count }, (_, i) => {
+    const side = i % 2 === 0 ? 1 : -1
+    const kind = KINDS[i % KINDS.length]
+    return {
+      kind,
+      x: side * (isMobile ? 2.4 : 5.5 + (i % 3) * 1.3),
+      y: (((i * 37) % 7) - 3) * 0.8,
+      z: -4 - i * SHAPE_SPACING,
+      scale: isMobile ? 0.5 : 0.75 + (i % 4) * 0.1,
+      color: COLORS[i % COLORS.length],
+      // Wireframes only on the faceted shapes; on curved ones they look noisy
+      wire: i % 3 === 2 && kind !== 'knot' && kind !== 'torus',
+    }
+  })
+}
 
 function makeGeometry(kind: ShapeKind) {
   switch (kind) {
@@ -62,14 +80,16 @@ function makeStarTexture() {
   return new THREE.CanvasTexture(canvas)
 }
 
-function makeStarfield(count: number, texture: THREE.Texture) {
+// Stars fill the whole flight path. Size is capped so stars passing close to
+// the camera stay small points instead of ballooning into blobs.
+function makeStarfield(count: number, depth: number, texture: THREE.Texture, pixelRatio: number) {
   const positions = new Float32Array(count * 3)
   const colors = new Float32Array(count * 3)
   const palette = ['#93c5fd', '#c4b5fd', '#f9a8d4', '#ffffff', '#67e8f9'].map((c) => new THREE.Color(c))
   for (let i = 0; i < count; i++) {
     positions[i * 3] = (Math.random() - 0.5) * 80
-    positions[i * 3 + 1] = 22 - Math.random() * 64
-    positions[i * 3 + 2] = -4 - Math.random() * 28
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 50
+    positions[i * 3 + 2] = CAMERA_Z + 2 - Math.random() * depth
     const c = palette[Math.floor(Math.random() * palette.length)]
     colors[i * 3] = c.r
     colors[i * 3 + 1] = c.g
@@ -88,12 +108,20 @@ function makeStarfield(count: number, texture: THREE.Texture) {
     depthWrite: false,
     blending: THREE.AdditiveBlending,
   })
+  const maxSize = (6 * pixelRatio).toFixed(1)
+  material.onBeforeCompile = (shader) => {
+    shader.vertexShader = shader.vertexShader.replace(
+      '#include <fog_vertex>',
+      `#include <fog_vertex>\n  gl_PointSize = min(gl_PointSize, ${maxSize});`
+    )
+  }
   return new THREE.Points(geometry, material)
 }
 
 function makeShape(spec: ShapeSpec, isMobile: boolean) {
+  const opacity = spec.wire ? 0.3 : isMobile ? 0.55 : 0.75
   const material = spec.wire
-    ? new THREE.MeshBasicMaterial({ color: spec.color, wireframe: true, transparent: true, opacity: 0.28 })
+    ? new THREE.MeshBasicMaterial({ color: spec.color, wireframe: true, transparent: true, opacity, fog: false })
     : new THREE.MeshPhysicalMaterial({
         color: spec.color,
         emissive: spec.color,
@@ -104,17 +132,21 @@ function makeShape(spec: ShapeSpec, isMobile: boolean) {
         clearcoatRoughness: 0.15,
         flatShading: true,
         transparent: true,
-        opacity: isMobile ? 0.55 : 0.75,
+        opacity,
+        // Faded by distance below instead; fog would turn far shapes into dark blots
+        fog: false,
       })
   const mesh = new THREE.Mesh(makeGeometry(spec.kind), material)
-  mesh.position.set(0, spec.y, spec.z)
-  mesh.scale.setScalar(spec.scale * (isMobile ? 0.6 : 1))
+  mesh.position.set(spec.x, spec.y, spec.z)
+  mesh.scale.setScalar(spec.scale)
   mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0)
+  mesh.userData.baseOpacity = opacity
   return mesh
 }
 
-// Fixed full-screen WebGL layer behind the page: starfield (far), floating
-// shapes (mid, parallax on scroll).
+// Fixed full-screen WebGL layer behind the page. Scrolling flies the camera
+// forward through a starfield, with shapes passing by on either side; far
+// objects fade into the background colour.
 // Written in plain three.js so it doesn't depend on React's renderer version.
 export default function Scene3D({ onReady }: { onReady?: () => void }) {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -134,43 +166,39 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
     } catch {
       return
     }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 1.75))
+    const pixelRatio = Math.min(window.devicePixelRatio, isMobile ? 1.5 : 1.75)
+    renderer.setPixelRatio(pixelRatio)
     renderer.setSize(mount.clientWidth, mount.clientHeight)
     mount.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
+    scene.fog = new THREE.Fog(BG, 14, 60)
     const camera = new THREE.PerspectiveCamera(FOV, mount.clientWidth / mount.clientHeight, 0.1, 100)
     camera.position.z = CAMERA_Z
+    scene.add(camera)
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.45))
     const sun = new THREE.DirectionalLight(0xffffff, 1.3)
     sun.position.set(5, 6, 5)
     scene.add(sun)
+    // Coloured lights ride along with the camera so shapes ahead stay lit
     const blue = new THREE.PointLight('#3b82f6', 2.2, 0, 0)
-    blue.position.set(-8, 3, 4)
+    blue.position.set(-8, 3, -6)
     const pink = new THREE.PointLight('#ec4899', 2.2, 0, 0)
-    pink.position.set(8, -3, 4)
-    scene.add(blue, pink)
+    pink.position.set(8, -3, -6)
+    camera.add(blue, pink)
+
+    // How far the camera can travel over the whole page
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 6000)
+    const travel = reducedMotion ? 0 : maxScroll * FORWARD
 
     const starTexture = makeStarTexture()
-    const stars = makeStarfield(isMobile ? 600 : 1500, starTexture)
+    const stars = makeStarfield(isMobile ? 1200 : 3000, travel + 70, starTexture, pixelRatio)
     scene.add(stars)
 
-    const shapeLayer = new THREE.Group()
-    const specs = isMobile ? SHAPES.filter((_, i) => i % 2 === 0) : SHAPES
+    const specs = makeShapeSpecs(travel, isMobile)
     const shapes = specs.map((spec) => makeShape(spec, isMobile))
-    shapeLayer.add(...shapes)
-    scene.add(shapeLayer)
-
-    // Keep shapes near the screen edges at their depth, whatever the aspect ratio
-    const placeShapes = () => {
-      const tanHalf = Math.tan(THREE.MathUtils.degToRad(FOV / 2))
-      shapes.forEach((mesh, i) => {
-        const halfWidth = tanHalf * (CAMERA_Z - specs[i].z) * camera.aspect
-        mesh.position.x = specs[i].side * halfWidth * (isMobile ? 0.78 : 0.88)
-      })
-    }
-    placeShapes()
+    scene.add(...shapes)
 
     const onResize = () => {
       const w = mount.clientWidth
@@ -178,7 +206,6 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
       renderer.setSize(w, h)
       camera.aspect = w / h
       camera.updateProjectionMatrix()
-      placeShapes()
     }
     window.addEventListener('resize', onResize)
 
@@ -198,28 +225,31 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
       frame = requestAnimationFrame(tick)
       const delta = Math.min(clock.getDelta(), 0.1)
       const t = clock.elapsedTime
-      const scrollY = window.scrollY
 
-      // Gentle mouse parallax
+      // Fly forward with the scroll (damped so wheel steps glide), drift with the mouse
+      const targetZ = CAMERA_Z - (reducedMotion ? 0 : window.scrollY * FORWARD)
+      camera.position.z = first ? targetZ : THREE.MathUtils.damp(camera.position.z, targetZ, 8, delta)
       const tx = reducedMotion ? 0 : pointer.x * 0.8
       const ty = reducedMotion ? 0 : pointer.y * 0.5
       camera.position.x = THREE.MathUtils.damp(camera.position.x, tx, 3, delta)
       camera.position.y = THREE.MathUtils.damp(camera.position.y, ty, 3, delta)
-      camera.lookAt(0, 0, 0)
+      camera.lookAt(camera.position.x * 0.3, camera.position.y * 0.3, camera.position.z - 30)
 
-      // Layers scroll at different speeds for depth
-      stars.position.y = scrollY * 0.0012
-      shapeLayer.position.y = scrollY * 0.004
-
-      if (!reducedMotion) {
-        stars.rotation.y = Math.sin(t * 0.05) * 0.05
-        shapes.forEach((mesh, i) => {
+      shapes.forEach((mesh, i) => {
+        // Fade in from the distance, and out just before passing the camera
+        const ahead = camera.position.z - mesh.position.z
+        const fadeIn = THREE.MathUtils.clamp((FADE_START - ahead) / (FADE_START - FADE_FULL), 0, 1)
+        const fadeOut = THREE.MathUtils.clamp((ahead - 1) / 4, 0, 1)
+        const material = mesh.material as THREE.MeshBasicMaterial | THREE.MeshPhysicalMaterial
+        material.opacity = mesh.userData.baseOpacity * fadeIn * fadeOut
+        mesh.visible = material.opacity > 0.01
+        if (!reducedMotion) {
           const spin = i % 2 === 0 ? 1 : -1
           mesh.rotation.x += delta * 0.18 * spin
           mesh.rotation.y += delta * 0.24
           mesh.position.y = specs[i].y + Math.sin(t * 0.6 + i * 1.7) * 0.25
-        })
-      }
+        }
+      })
 
       renderer.render(scene, camera)
 
