@@ -11,12 +11,13 @@ import PersonalTraits from '@/components/PersonalTraits'
 import Contact from '@/components/Contact'
 import Chatbot from '@/components/Chatbot'
 import Background3D from '@/components/Background3D'
-import DepthSection from '@/components/DepthSection'
+import DepthSection, { DepthAnchorScroll } from '@/components/DepthSection'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Background3D />
+      <DepthAnchorScroll />
       <Navigation />
       {/* The hero is already in front of you on load, so it only moves away */}
       <DepthSection approach={false}>
