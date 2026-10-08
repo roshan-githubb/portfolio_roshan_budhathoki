@@ -55,6 +55,9 @@ export default function TiltCard({
   const glareX = useTransform(sx, (v) => `${v * 100}%`)
   const glareY = useTransform(sy, (v) => `${v * 100}%`)
   const glare = useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.14), transparent 55%)`
+  // -1..1 tilt exposed as CSS variables so .icon-3d children float with it
+  const tiltX = useTransform(sx, [0, 1], [-1, 1])
+  const tiltY = useTransform(sy, [0, 1], [-1, 1])
 
   const handleMove = (e: React.PointerEvent<HTMLDivElement>) => {
     onPointerMove?.(e)
@@ -79,7 +82,7 @@ export default function TiltCard({
       className={`group/tilt relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/20 ${className}`}
       style={{
         ...style,
-        ...(enabled ? { rotateX, rotateY, transformPerspective: 1000 } : {}),
+        ...(enabled ? { rotateX, rotateY, transformPerspective: 1000, '--tilt-x': tiltX, '--tilt-y': tiltY } : {}),
       }}
     >
       {children}

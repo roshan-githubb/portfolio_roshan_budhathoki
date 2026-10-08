@@ -102,7 +102,7 @@ const AgenticAI = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass-effect p-6 rounded-2xl text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">{stat.value}</div>
+                <div className="text-3xl md:text-4xl font-bold gradient-text text-3d mb-2">{stat.value}</div>
                 <div className="text-gray-400 text-sm">{stat.label}</div>
               </TiltCard>
             ))}
@@ -118,7 +118,7 @@ const AgenticAI = () => {
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 className="glass-effect p-6 rounded-2xl group"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 icon-3d mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
                   {pillar.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">

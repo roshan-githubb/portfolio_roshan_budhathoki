@@ -74,7 +74,7 @@ const About = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass-effect p-6 rounded-xl text-center"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 icon-3d mb-4">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>

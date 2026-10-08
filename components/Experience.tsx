@@ -115,7 +115,7 @@ const Experience = () => {
 
                   <TiltCard maxTilt={5} className="glass-effect p-6 md:p-8 rounded-2xl">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
+                      <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 icon-3d rounded-lg">
                         <Briefcase size={24} />
                       </div>
                       <div className="flex-1">

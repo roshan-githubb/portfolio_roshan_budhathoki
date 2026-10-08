@@ -58,7 +58,7 @@ const Education = () => {
                 className="glass-effect p-6 md:p-8 rounded-2xl"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex-shrink-0">
+                  <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 icon-3d rounded-lg flex-shrink-0">
                     <GraduationCap size={28} />
                   </div>
                   <div className="flex-1">

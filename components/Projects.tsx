@@ -19,6 +19,8 @@ const Projects = () => {
       technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
       icon: Gamepad2,
       gradient: 'from-violet-500/20 to-indigo-600/20',
+      tile: 'from-violet-500 to-indigo-600',
+      edge: '#3730a3',
       featured: true,
     },
     {
@@ -27,6 +29,8 @@ const Projects = () => {
       technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS'],
       icon: HeartPulse,
       gradient: 'from-rose-500/20 to-red-600/20',
+      tile: 'from-rose-500 to-red-600',
+      edge: '#991b1b',
       featured: true,
     },
     {
@@ -35,6 +39,8 @@ const Projects = () => {
       technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Video.js'],
       icon: Video,
       gradient: 'from-fuchsia-500/20 to-purple-600/20',
+      tile: 'from-fuchsia-500 to-purple-600',
+      edge: '#6b21a8',
       featured: true,
     },
     {
@@ -43,6 +49,8 @@ const Projects = () => {
       technologies: ['Next.js', 'Medusa.js', 'Mercurius', 'React', 'PostgreSQL'],
       icon: ShoppingCart,
       gradient: 'from-emerald-500/20 to-teal-600/20',
+      tile: 'from-emerald-500 to-teal-600',
+      edge: '#115e59',
       featured: true,
     },
     {
@@ -51,6 +59,8 @@ const Projects = () => {
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Chart.js'],
       icon: LayoutDashboard,
       gradient: 'from-blue-500/20 to-indigo-600/20',
+      tile: 'from-blue-500 to-indigo-600',
+      edge: '#3730a3',
       featured: false,
     },
     {
@@ -59,6 +69,8 @@ const Projects = () => {
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       icon: FileText,
       gradient: 'from-amber-500/20 to-orange-600/20',
+      tile: 'from-amber-500 to-orange-600',
+      edge: '#9a3412',
       featured: false,
     },
     {
@@ -67,6 +79,8 @@ const Projects = () => {
       technologies: ['C#', 'AL Language', '.NET', 'SQL Server', 'SSRS'],
       icon: Building2,
       gradient: 'from-sky-500/20 to-cyan-600/20',
+      tile: 'from-sky-500 to-cyan-600',
+      edge: '#155e75',
       featured: false,
     },
   ]
@@ -95,9 +109,19 @@ const Projects = () => {
                 className="glass-effect rounded-2xl overflow-hidden group"
               >
                 {/* Project Image */}
+                {/* Mini 3D scene: perspective grid floor with the icon tile floating above its shadow */}
                 <div className={`relative h-40 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <project.icon className="w-16 h-16 text-white/40 group-hover:text-white/70 group-hover:scale-110 transition-all duration-300" strokeWidth={1.5} />
+                  <div aria-hidden className="grid-floor" />
+                  <div aria-hidden className="absolute left-1/2 bottom-7 -translate-x-1/2 w-16 h-3 rounded-[50%] bg-black/50 blur-md" />
+                  <div className="absolute inset-0 flex items-center justify-center pb-4">
+                    <div className="float-3d" style={{ animationDelay: `${index * -0.6}s` }}>
+                      <div
+                        className={`icon-3d w-16 h-16 rounded-2xl bg-gradient-to-br ${project.tile} flex items-center justify-center`}
+                        style={{ '--edge': project.edge } as React.CSSProperties}
+                      >
+                        <project.icon className="w-8 h-8 text-white drop-shadow" strokeWidth={1.75} />
+                      </div>
+                    </div>
                   </div>
                   {project.featured && (
                     <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-xs font-semibold">

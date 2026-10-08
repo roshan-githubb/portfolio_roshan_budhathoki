@@ -66,7 +66,7 @@ const Skills = () => {
           >
             <div className="bg-slate-950/90 backdrop-blur-lg p-8 rounded-2xl">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+                <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 icon-3d">
                   <Bot size={22} />
                 </div>
                 <h3 className="text-2xl font-bold gradient-text">Agentic AI & Development ⚡</h3>
@@ -101,7 +101,7 @@ const Skills = () => {
                 className="glass-effect p-8 rounded-2xl"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 icon-3d">
                     {category.icon}
                   </div>
                   <h3 className="text-2xl font-bold text-blue-400">{category.category}</h3>

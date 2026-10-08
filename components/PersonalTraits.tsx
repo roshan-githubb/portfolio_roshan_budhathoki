@@ -69,7 +69,7 @@ const PersonalTraits = () => {
                 className="glass-effect p-6 rounded-2xl group"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg group-hover:scale-110 transition-transform">
+                  <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 icon-3d rounded-lg group-hover:scale-110 transition-transform">
                     <trait.icon size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
