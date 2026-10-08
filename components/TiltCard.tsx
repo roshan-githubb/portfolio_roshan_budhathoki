@@ -79,9 +79,11 @@ export default function TiltCard({
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
       whileHover={enabled ? { scale: 1.02 } : undefined}
-      className={`group/tilt relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/20 ${className}`}
+      className={`group/tilt card-float relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/20 ${className}`}
       style={{
         ...style,
+        // Long text cards (low maxTilt) sway less so they stay easy to read
+        ['--float-rot' as string]: maxTilt <= 5 ? '2deg' : '6deg',
         ...(enabled ? { rotateX, rotateY, transformPerspective: 1000, '--tilt-x': tiltX, '--tilt-y': tiltY } : {}),
       }}
     >

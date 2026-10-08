@@ -129,6 +129,72 @@
     mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
   }
 
+  /* Cards float in 3D like the background shapes: a slow bob and sway, each at
+     its own depth and phase. Uses the individual translate/rotate properties so
+     it composes with TiltCard's transform (tilt + entrance). The parent gets a
+     perspective so the sway and depth read as real 3D. --float-rot is set per
+     card (gentler on long text cards). */
+  *:has(> .card-float) {
+    perspective: 1400px;
+  }
+
+  .card-float {
+    --float-z: 0px;
+    --float-rot: 6deg;
+    animation: card-sway 7s ease-in-out infinite;
+  }
+
+  .card-float:nth-child(3n + 1) {
+    --float-z: 40px;
+    animation-duration: 7.5s;
+    animation-delay: -1.2s;
+  }
+
+  .card-float:nth-child(3n + 2) {
+    --float-z: -35px;
+    animation-name: card-rock;
+    animation-duration: 8.5s;
+    animation-delay: -4s;
+  }
+
+  .card-float:nth-child(3n) {
+    --float-z: 15px;
+    animation-duration: 6.5s;
+    animation-delay: -2.6s;
+  }
+
+  /* Sways side to side around a slightly tilted vertical axis */
+  @keyframes card-sway {
+    0%,
+    100% {
+      translate: 0 0 var(--float-z);
+      rotate: 0.35 1 0 calc(var(--float-rot) * -1);
+    }
+    50% {
+      translate: 0 -16px var(--float-z);
+      rotate: 0.35 1 0 var(--float-rot);
+    }
+  }
+
+  /* Rocks forward and back around a slightly tilted horizontal axis */
+  @keyframes card-rock {
+    0%,
+    100% {
+      translate: 0 -14px var(--float-z);
+      rotate: 1 0.3 0 calc(var(--float-rot) * -0.8);
+    }
+    50% {
+      translate: 0 3px var(--float-z);
+      rotate: 1 0.3 0 calc(var(--float-rot) * 0.8);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-float {
+      animation: none;
+    }
+  }
+
   .float-3d {
     animation: float3d 4s ease-in-out infinite;
   }

@@ -15,7 +15,8 @@ import DepthSection, { DepthAnchorScroll } from '@/components/DepthSection'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    // overflow-x-clip: sections growing as they fly past must not cause a horizontal scrollbar
+    <main className="min-h-screen overflow-x-clip">
       <Background3D />
       <DepthAnchorScroll />
       <Navigation />
