@@ -116,6 +116,7 @@ const AgenticAI = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                float={false}
                 className="glass-effect p-6 rounded-2xl group"
               >
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 icon-3d mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">

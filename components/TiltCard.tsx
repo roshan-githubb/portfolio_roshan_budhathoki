@@ -14,6 +14,8 @@ type TiltCardProps = Omit<HTMLMotionProps<'div'>, 'children'> & {
   children?: React.ReactNode
   /** Maximum tilt in degrees at the card's edges */
   maxTilt?: number
+  /** Drift gently in 3D (.card-float). Off by default for long text cards (maxTilt <= 5). */
+  float?: boolean
 }
 
 // Drop-in replacement for a motion.div card: tilts in 3D toward the cursor with a
@@ -24,6 +26,7 @@ export default function TiltCard({
   className = '',
   style,
   maxTilt = 8,
+  float = maxTilt > 5,
   onPointerMove,
   onPointerLeave,
   ...rest
@@ -79,11 +82,9 @@ export default function TiltCard({
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
       whileHover={enabled ? { scale: 1.02 } : undefined}
-      className={`group/tilt card-float relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/20 ${className}`}
+      className={`group/tilt ${float ? 'card-float' : ''} relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/20 ${className}`}
       style={{
         ...style,
-        // Long text cards (low maxTilt) sway less so they stay easy to read
-        ['--float-rot' as string]: maxTilt <= 5 ? '2deg' : '6deg',
         ...(enabled ? { rotateX, rotateY, transformPerspective: 1000, '--tilt-x': tiltX, '--tilt-y': tiltY } : {}),
       }}
     >

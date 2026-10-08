@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 
 // translateZ distances (px) and tilt (deg). Phones get a lighter version.
-const DESKTOP = { far: -900, past: 450, tilt: 10 }
-const MOBILE = { far: -380, past: 200, tilt: 5 }
+const DESKTOP = { far: -600, past: 400, tilt: 8 }
+const MOBILE = { far: -280, past: 180, tilt: 4 }
 
 // Puts a page section in 3D space, travelling with the background camera.
 // As it rises into view it comes from far away, leaning back; it stands upright
@@ -26,14 +26,14 @@ export default function DepthSection({ children, approach = true }: { children: 
     return () => mq.removeEventListener('change', update)
   }, [])
 
-  // 0 when the section's top enters at the bottom of the screen, 1 once it reaches 35% from the top
-  const { scrollYProgress: arriving } = useScroll({ target: ref, offset: ['start end', 'start 0.35'] })
-  // 0 when the section's bottom is just over halfway up the screen, 1 once it has left the top
-  const { scrollYProgress: leaving } = useScroll({ target: ref, offset: ['end 0.55', 'end start'] })
+  // 0 when the section's top enters at the bottom of the screen, 1 once it's 40% up (readable early)
+  const { scrollYProgress: arriving } = useScroll({ target: ref, offset: ['start end', 'start 0.6'] })
+  // 0 when the section's bottom is 40% from the top, 1 once it has left the top
+  const { scrollYProgress: leaving } = useScroll({ target: ref, offset: ['end 0.4', 'end start'] })
 
   const arriveZ = useTransform(arriving, [0, 1], [approach ? depth.far : 0, 0])
   const arriveTilt = useTransform(arriving, [0, 1], [approach ? -depth.tilt : 0, 0])
-  const arriveOpacity = useTransform(arriving, [0, 0.75], [approach ? 0.1 : 1, 1])
+  const arriveOpacity = useTransform(arriving, [0, 0.6], [approach ? 0.25 : 1, 1])
   const leaveZ = useTransform(leaving, [0, 1], [0, depth.past])
   const leaveTilt = useTransform(leaving, [0, 1], [0, -depth.tilt * 0.8])
   const leaveOpacity = useTransform(leaving, [0, 1], [1, 0])
