@@ -21,7 +21,7 @@ type ShapeSpec = {
 // Spread down the page, alternating sides so they frame the content column
 const SHAPES: ShapeSpec[] = [
   { kind: 'ico', side: 1, y: 3.2, z: -7, scale: 0.8, color: '#8b5cf6', wire: true },
-  { kind: 'knot', side: -1, y: -6.5, z: -6, scale: 0.65, color: '#3b82f6', wire: false },
+  { kind: 'knot', side: -1, y: -10.5, z: -6, scale: 0.65, color: '#3b82f6', wire: false },
   { kind: 'octa', side: 1, y: -7.5, z: -4, scale: 0.85, color: '#ec4899', wire: false },
   { kind: 'torus', side: -1, y: -12, z: -5, scale: 0.85, color: '#06b6d4', wire: false },
   { kind: 'dodeca', side: 1, y: -16, z: -6, scale: 1, color: '#6366f1', wire: true },
@@ -33,9 +33,9 @@ const SHAPES: ShapeSpec[] = [
 ]
 
 const ORBITS = [
-  { radius: 1.12, tilt: [1.25, 0.25, 0], speed: 0.9, color: '#60a5fa' },
-  { radius: 1.22, tilt: [-1.0, -0.45, 0.3], speed: -0.7, color: '#c084fc' },
-  { radius: 1.34, tilt: [0.35, 1.15, 0], speed: 0.5, color: '#f472b6' },
+  { radius: 1.07, tilt: [1.25, 0.25, 0], speed: 0.9, color: '#60a5fa' },
+  { radius: 1.15, tilt: [-1.0, -0.45, 0.3], speed: -0.7, color: '#c084fc' },
+  { radius: 1.24, tilt: [0.35, 1.15, 0], speed: 0.5, color: '#f472b6' },
 ] as const
 
 function makeGeometry(kind: ShapeKind) {
@@ -125,8 +125,8 @@ function makeHeroOrbit() {
   const glow = { transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }
 
   const shell = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(1.3, 1),
-    new THREE.MeshBasicMaterial({ color: '#818cf8', wireframe: true, opacity: 0.22, ...glow })
+    new THREE.IcosahedronGeometry(1.2, 1),
+    new THREE.MeshBasicMaterial({ color: '#818cf8', wireframe: true, opacity: 0.12, ...glow })
   )
   group.add(shell)
 
@@ -140,9 +140,9 @@ function makeHeroOrbit() {
       )
     )
     const spinner = new THREE.Group()
-    const core = new THREE.Mesh(new THREE.SphereGeometry(0.04, 16, 16), new THREE.MeshBasicMaterial({ color: '#ffffff' }))
+    const core = new THREE.Mesh(new THREE.SphereGeometry(0.022, 16, 16), new THREE.MeshBasicMaterial({ color: '#ffffff' }))
     const halo = new THREE.Mesh(
-      new THREE.SphereGeometry(0.09, 16, 16),
+      new THREE.SphereGeometry(0.05, 16, 16),
       new THREE.MeshBasicMaterial({ color: orbit.color, opacity: 0.35, ...glow })
     )
     core.position.x = halo.position.x = orbit.radius
@@ -257,7 +257,10 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
       dir.copy(ndc).sub(camera.position).normalize()
       orbit.group.position.copy(camera.position).addScaledVector(dir, -camera.position.z / dir.z)
       const worldPerPx = (2 * tanHalfFov * camera.position.z) / h
-      orbit.group.scale.setScalar((rect.width / 2) * worldPerPx)
+      const s = (rect.width / 2) * worldPerPx
+      // Half depth: keeps the tilted rings' shape but stops perspective from
+      // blowing up their near side past the screen edge on smaller screens
+      orbit.group.scale.set(s, s, s * 0.5)
     }
 
     const clock = new THREE.Clock()
