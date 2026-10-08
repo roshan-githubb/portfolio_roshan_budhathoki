@@ -9,17 +9,31 @@ import {
   useTransform,
   type HTMLMotionProps,
 } from 'framer-motion'
+import Reveal3D, { type RevealFrom } from './Reveal3D'
 
 type TiltCardProps = Omit<HTMLMotionProps<'div'>, 'children'> & {
   children?: React.ReactNode
   /** Maximum tilt in degrees at the card's edges */
   maxTilt?: number
+  /** Fly the card in from depth when it scrolls into view */
+  reveal?: { from?: RevealFrom; delay?: number }
 }
 
 // Drop-in replacement for a motion.div card: tilts in 3D toward the cursor with a
 // soft glare. Framer composes the tilt with any entrance animation (y, x, scale)
 // passed in. Disabled on touch devices and for prefers-reduced-motion.
-export default function TiltCard({
+export default function TiltCard({ reveal, ...props }: TiltCardProps) {
+  if (!reveal) return <TiltSurface {...props} />
+  // The reveal runs on a wrapper so its rotation doesn't fight the tilt's.
+  // h-full keeps cards equal height when the wrapper is the grid item.
+  return (
+    <Reveal3D from={reveal.from} delay={reveal.delay}>
+      <TiltSurface {...props} className={`h-full ${props.className ?? ''}`} />
+    </Reveal3D>
+  )
+}
+
+function TiltSurface({
   children,
   className = '',
   style,
@@ -27,7 +41,7 @@ export default function TiltCard({
   onPointerMove,
   onPointerLeave,
   ...rest
-}: TiltCardProps) {
+}: Omit<TiltCardProps, 'reveal'>) {
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {

@@ -51,9 +51,7 @@ const Education = () => {
             {education.map((edu, index) => (
               <TiltCard
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                reveal={{}}
                 maxTilt={5}
                 className="glass-effect p-6 md:p-8 rounded-2xl"
               >

@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Reveal3D from './Reveal3D'
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react'
 import { trackContactFormSubmit, trackSocialClick } from '@/lib/analytics'
 import { logContactSubmission } from '@/lib/firestore'
@@ -104,11 +105,7 @@ const Contact = () => {
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            <Reveal3D from="left">
               <h3 className="text-2xl font-bold mb-6">Let&apos;s Connect</h3>
               <p className="text-gray-400 mb-8">
                 I&apos;m actively seeking new opportunities and exciting projects. 
@@ -161,14 +158,10 @@ const Contact = () => {
                   <Mail size={24} />
                 </a>
               </div>
-            </motion.div>
+            </Reveal3D>
 
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
+            <Reveal3D from="right" delay={0.1}>
               <form onSubmit={handleSubmit} className="glass-effect p-8 rounded-2xl">
                 <div className="mb-6">
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -254,7 +247,7 @@ const Contact = () => {
                   </p>
                 )}
               </form>
-            </motion.div>
+            </Reveal3D>
           </div>
 
           {/* Footer */}
