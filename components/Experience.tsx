@@ -3,7 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import Reveal3D from './Reveal3D'
 import TiltCard from './TiltCard'
 import { Briefcase, Calendar } from 'lucide-react'
 
@@ -102,12 +101,15 @@ const Experience = () => {
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-600"></div>
 
               {experiences.map((exp, index) => (
-                <Reveal3D
+                <motion.div
                   key={index}
-                  from={index % 2 === 0 ? 'left' : 'right'}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
                   className={`relative mb-12 ${
                     index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'
-                  }`}>
+                  }`}
+                >
                   {/* Timeline dot */}
                   <div className="hidden md:block absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full border-4 border-slate-900"></div>
 
@@ -152,7 +154,7 @@ const Experience = () => {
                       ))}
                     </div>
                   </TiltCard>
-                </Reveal3D>
+                </motion.div>
               ))}
             </div>
           </div>

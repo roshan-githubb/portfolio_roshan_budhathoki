@@ -97,7 +97,9 @@ const AgenticAI = () => {
             {stats.map((stat, index) => (
               <TiltCard
                 key={stat.label}
-                reveal={{ delay: (index % 4) * 0.08 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass-effect p-6 rounded-2xl text-center"
               >
                 <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">{stat.value}</div>
@@ -111,7 +113,9 @@ const AgenticAI = () => {
             {pillars.map((pillar, index) => (
               <TiltCard
                 key={pillar.title}
-                reveal={{ delay: (index % 3) * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 className="glass-effect p-6 rounded-2xl group"
               >
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">

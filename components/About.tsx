@@ -4,7 +4,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import TiltCard from './TiltCard'
-import Reveal3D from './Reveal3D'
 import { Code2, Rocket, Users, Award, Bot } from 'lucide-react'
 
 const About = () => {
@@ -52,7 +51,7 @@ const About = () => {
         >
           <h2 className="section-title gradient-text">About Me</h2>
 
-          <Reveal3D className="max-w-4xl mx-auto mb-16">
+          <div className="max-w-4xl mx-auto mb-16">
             <div className="glass-effect p-8 md:p-12 rounded-2xl">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
                 I ship <span className="text-blue-400 font-semibold">products</span>, not just code. <span className="text-green-400 font-semibold">4+ years</span> as a Full Stack Product Engineer. Since going all-in on <span className="text-purple-400 font-semibold">Agentic AI</span>, I build in days what used to take weeks. Same quality bar, <span className="text-pink-400 font-semibold">a fraction of the time</span>.
@@ -64,13 +63,15 @@ const About = () => {
                 If you need an engineer who <span className="text-blue-400 font-semibold">takes ownership</span>, <span className="text-purple-400 font-semibold">moves fast</span>, and <span className="text-pink-400 font-semibold">raises the bar</span>, let&apos;s talk.
               </p>
             </div>
-          </Reveal3D>
+          </div>
             
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {highlights.map((item, index) => (
               <TiltCard
                 key={item.title}
-                reveal={{ delay: (index % 3) * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass-effect p-6 rounded-xl text-center"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">

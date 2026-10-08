@@ -89,7 +89,9 @@ const Projects = () => {
             {projects.map((project, index) => (
               <TiltCard
                 key={index}
-                reveal={{ delay: (index % 3) * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass-effect rounded-2xl overflow-hidden group"
               >
                 {/* Project Image */}
