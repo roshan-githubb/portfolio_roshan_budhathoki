@@ -32,12 +32,6 @@ const SHAPES: ShapeSpec[] = [
   { kind: 'torus', side: -1, y: -37, z: -6, scale: 0.8, color: '#8b5cf6', wire: true },
 ]
 
-const ORBITS = [
-  { radius: 1.07, tilt: [1.25, 0.25, 0], speed: 0.9, color: '#60a5fa' },
-  { radius: 1.15, tilt: [-1.0, -0.45, 0.3], speed: -0.7, color: '#c084fc' },
-  { radius: 1.24, tilt: [0.35, 1.15, 0], speed: 0.5, color: '#f472b6' },
-] as const
-
 function makeGeometry(kind: ShapeKind) {
   switch (kind) {
     case 'ico':
@@ -119,45 +113,8 @@ function makeShape(spec: ShapeSpec, isMobile: boolean) {
   return mesh
 }
 
-// Orbit rings + wireframe shell, built at unit scale (radius 1 = photo radius)
-function makeHeroOrbit() {
-  const group = new THREE.Group()
-  const glow = { transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }
-
-  const shell = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(1.2, 1),
-    new THREE.MeshBasicMaterial({ color: '#818cf8', wireframe: true, opacity: 0.12, ...glow })
-  )
-  group.add(shell)
-
-  const spinners = ORBITS.map((orbit) => {
-    const tilted = new THREE.Group()
-    tilted.rotation.set(orbit.tilt[0], orbit.tilt[1], orbit.tilt[2])
-    tilted.add(
-      new THREE.Mesh(
-        new THREE.TorusGeometry(orbit.radius, 0.009, 8, 160),
-        new THREE.MeshBasicMaterial({ color: orbit.color, opacity: 0.75, ...glow })
-      )
-    )
-    const spinner = new THREE.Group()
-    const core = new THREE.Mesh(new THREE.SphereGeometry(0.022, 16, 16), new THREE.MeshBasicMaterial({ color: '#ffffff' }))
-    const halo = new THREE.Mesh(
-      new THREE.SphereGeometry(0.05, 16, 16),
-      new THREE.MeshBasicMaterial({ color: orbit.color, opacity: 0.35, ...glow })
-    )
-    core.position.x = halo.position.x = orbit.radius
-    spinner.add(core, halo)
-    tilted.add(spinner)
-    group.add(tilted)
-    return { spinner, speed: orbit.speed }
-  })
-
-  group.visible = false
-  return { group, shell, spinners }
-}
-
 // Fixed full-screen WebGL layer behind the page: starfield (far), floating
-// shapes (mid, parallax on scroll) and orbit rings that follow the hero photo.
+// shapes (mid, parallax on scroll).
 // Written in plain three.js so it doesn't depend on React's renderer version.
 export default function Scene3D({ onReady }: { onReady?: () => void }) {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -205,9 +162,6 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
     shapeLayer.add(...shapes)
     scene.add(shapeLayer)
 
-    const orbit = makeHeroOrbit()
-    scene.add(orbit.group)
-
     // Keep shapes near the screen edges at their depth, whatever the aspect ratio
     const placeShapes = () => {
       const tanHalf = Math.tan(THREE.MathUtils.degToRad(FOV / 2))
@@ -236,33 +190,6 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
     }
     window.addEventListener('pointermove', onMove, { passive: true })
 
-    const photo = document.getElementById('hero-photo')
-    const ndc = new THREE.Vector3()
-    const dir = new THREE.Vector3()
-    const tanHalfFov = Math.tan(THREE.MathUtils.degToRad(FOV) / 2)
-
-    // Place the orbit on the z = 0 plane under the photo's screen centre, scaled
-    // so radius 1 matches the photo's on-screen radius
-    const trackPhoto = () => {
-      const h = mount.clientHeight
-      const rect = photo?.getBoundingClientRect()
-      if (!rect || rect.width === 0 || rect.bottom < -200 || rect.top > h + 200) {
-        orbit.group.visible = false
-        return
-      }
-      orbit.group.visible = true
-      ndc
-        .set(((rect.left + rect.width / 2) / mount.clientWidth) * 2 - 1, -((rect.top + rect.height / 2) / h) * 2 + 1, 0.5)
-        .unproject(camera)
-      dir.copy(ndc).sub(camera.position).normalize()
-      orbit.group.position.copy(camera.position).addScaledVector(dir, -camera.position.z / dir.z)
-      const worldPerPx = (2 * tanHalfFov * camera.position.z) / h
-      const s = (rect.width / 2) * worldPerPx
-      // Half depth: keeps the tilted rings' shape but stops perspective from
-      // blowing up their near side past the screen edge on smaller screens
-      orbit.group.scale.set(s, s, s * 0.5)
-    }
-
     const clock = new THREE.Clock()
     let frame = 0
     let first = true
@@ -279,7 +206,6 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
       camera.position.x = THREE.MathUtils.damp(camera.position.x, tx, 3, delta)
       camera.position.y = THREE.MathUtils.damp(camera.position.y, ty, 3, delta)
       camera.lookAt(0, 0, 0)
-      camera.updateMatrixWorld()
 
       // Layers scroll at different speeds for depth
       stars.position.y = scrollY * 0.0012
@@ -293,12 +219,8 @@ export default function Scene3D({ onReady }: { onReady?: () => void }) {
           mesh.rotation.y += delta * 0.24
           mesh.position.y = specs[i].y + Math.sin(t * 0.6 + i * 1.7) * 0.25
         })
-        orbit.shell.rotation.y += delta * 0.12
-        orbit.shell.rotation.x += delta * 0.05
-        orbit.spinners.forEach(({ spinner, speed }) => (spinner.rotation.z += delta * speed))
       }
 
-      trackPhoto()
       renderer.render(scene, camera)
 
       if (first) {

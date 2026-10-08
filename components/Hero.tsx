@@ -71,8 +71,7 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            {/* id is used by the 3D scene to place its orbit rings around the photo */}
-            <TiltCard id="hero-photo" maxTilt={14} className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full">
+            <TiltCard maxTilt={14} className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full">
               {/* Rotating gradient ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow opacity-70 blur-sm"></div>
               <div className="absolute inset-1 rounded-full bg-slate-950"></div>
