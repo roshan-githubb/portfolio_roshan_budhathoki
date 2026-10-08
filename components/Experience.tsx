@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import TiltCard from './TiltCard'
 import { Briefcase, Calendar } from 'lucide-react'
 
 const Experience = () => {
@@ -112,7 +113,7 @@ const Experience = () => {
                   {/* Timeline dot */}
                   <div className="hidden md:block absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full border-4 border-slate-900"></div>
 
-                  <div className="glass-effect p-6 md:p-8 rounded-2xl card-hover">
+                  <TiltCard maxTilt={5} className="glass-effect p-6 md:p-8 rounded-2xl">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
                         <Briefcase size={24} />
@@ -152,7 +153,7 @@ const Experience = () => {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </TiltCard>
                 </motion.div>
               ))}
             </div>

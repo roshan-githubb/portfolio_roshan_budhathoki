@@ -10,10 +10,12 @@ import Projects from '@/components/Projects'
 import PersonalTraits from '@/components/PersonalTraits'
 import Contact from '@/components/Contact'
 import Chatbot from '@/components/Chatbot'
+import Background3D from '@/components/Background3D'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <Background3D />
       <Navigation />
       <Hero />
       <About />

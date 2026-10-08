@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import TiltCard from './TiltCard'
 import { GraduationCap } from 'lucide-react'
 
 const Education = () => {
@@ -48,12 +49,13 @@ const Education = () => {
 
           <div className="max-w-4xl mx-auto space-y-8">
             {education.map((edu, index) => (
-              <motion.div
+              <TiltCard
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="glass-effect p-6 md:p-8 rounded-2xl card-hover"
+                maxTilt={5}
+                className="glass-effect p-6 md:p-8 rounded-2xl"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex-shrink-0">
@@ -71,7 +73,7 @@ const Education = () => {
                     <p className="text-gray-300 text-sm">{edu.description}</p>
                   </div>
                 </div>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
         </motion.div>

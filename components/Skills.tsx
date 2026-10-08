@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import TiltCard from './TiltCard'
 import { Bot, Monitor, Server, Database, Cloud } from 'lucide-react'
 
 const Skills = () => {
@@ -91,12 +92,13 @@ const Skills = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {skillCategories.map((category, categoryIndex) => (
-              <motion.div
+              <TiltCard
                 key={category.category}
                 initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="glass-effect p-8 rounded-2xl card-hover"
+                maxTilt={5}
+                className="glass-effect p-8 rounded-2xl"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
@@ -117,7 +119,7 @@ const Skills = () => {
                     </motion.span>
                   ))}
                 </div>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
         </motion.div>

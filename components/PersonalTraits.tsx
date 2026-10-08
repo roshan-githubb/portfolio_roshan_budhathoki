@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import TiltCard from './TiltCard'
 import { Target, Lightbulb, Zap, Users, Rocket, Bot } from 'lucide-react'
 
 const PersonalTraits = () => {
@@ -60,12 +61,12 @@ const PersonalTraits = () => {
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {traits.map((trait, index) => (
-              <motion.div
+              <TiltCard
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-effect p-6 rounded-2xl card-hover group"
+                className="glass-effect p-6 rounded-2xl group"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg group-hover:scale-110 transition-transform">
@@ -80,7 +81,7 @@ const PersonalTraits = () => {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
         </motion.div>
