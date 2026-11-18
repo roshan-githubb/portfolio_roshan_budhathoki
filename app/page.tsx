@@ -11,6 +11,7 @@ import PersonalTraits from '@/components/PersonalTraits'
 import Contact from '@/components/Contact'
 import Chatbot from '@/components/Chatbot'
 import Background3D from '@/components/Background3D'
+import Spotlight from '@/components/Spotlight'
 import DepthSection, { DepthAnchorScroll } from '@/components/DepthSection'
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
     // overflow-x-clip: sections growing as they fly past must not cause a horizontal scrollbar
     <main className="min-h-screen overflow-x-clip">
       <Background3D />
+      <Spotlight />
       <DepthAnchorScroll />
       <Navigation />
       {/* The hero is already in front of you on load, so it only moves away */}

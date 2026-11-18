@@ -32,6 +32,53 @@
 @layer components {
   .glass-effect {
     @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+    /* Spotlight (components/Spotlight.tsx) sets these per card while the mouse is
+       near. Declared here so a card never inherits a parent card's values. */
+    position: relative;
+    --spot-x: 50%;
+    --spot-y: 50%;
+    --spot-o: 0;
+  }
+
+  .glass-effect::before,
+  .glass-effect::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--spot-o);
+    transition: opacity 0.4s ease;
+  }
+
+  /* Spotlight edge: a 1px ring just inside the border, lit around the pointer.
+     Above the card's content so image banners don't cover it. */
+  .glass-effect::before {
+    z-index: 2;
+    padding: 1px;
+    background: radial-gradient(
+      300px circle at var(--spot-x) var(--spot-y),
+      rgba(237, 233, 254, 1),
+      rgba(167, 139, 250, 0.9) 25%,
+      rgba(96, 165, 250, 0.4) 50%,
+      transparent 75%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  /* Spotlight fill: faint light inside the card, behind its content (the glass
+     blur makes each card its own layer, so -1 stays inside the card) */
+  .glass-effect::after {
+    z-index: -1;
+    background: radial-gradient(
+      340px circle at var(--spot-x) var(--spot-y),
+      rgba(139, 92, 246, 0.17),
+      rgba(59, 130, 246, 0.06) 40%,
+      transparent 70%
+    );
   }
 
   .gradient-text {
@@ -254,4 +301,21 @@
 ::selection {
   background-color: rgba(139, 92, 246, 0.3);
   color: white;
+}
+
+/* Spotlight page glow (components/Spotlight.tsx): soft light following the mouse,
+   above the 3D background (-z-10) and behind the content */
+.spotlight-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    600px circle at var(--spot-x, -100%) var(--spot-y, -100%),
+    rgba(59, 130, 246, 0.16),
+    rgba(139, 92, 246, 0.07) 35%,
+    transparent 70%
+  );
 }
